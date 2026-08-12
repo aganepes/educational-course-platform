@@ -1,0 +1,41 @@
+{
+  "header": {
+    "nav": {
+      "home": "Baş sahypa",
+      "courses": "Kurslar",
+      "portfolio": "Talyplaryň işleri",
+      "about": "Biz hakda",
+      "contact": "Habarlaşmak"
+    },
+    "auth": {
+      "login": "Giriş",
+      "register": "Hasaba durmak"
+    }
+  },
+  "footer": {
+    "platform": {
+      "title": "Platforma",
+      "home": "Baş sahypa",
+      "courses": "Kurslar",
+      "teachers": "Mugallymlar",
+      "pricing": "Bahalar"
+    },
+    "company": {
+      "title": "Kompaniýa",
+      "about": "Biz hakda",
+      "careers": "Karýera",
+      "blog": "Blog",
+      "contact": "Habarlaşmak"
+    },
+    "support": {
+      "title": "Goldaw",
+      "helpCenter": "Kömek merkezi",
+      "terms": "Şertler",
+      "privacy": "Gizlinlik",
+      "faq": "FAQ"
+    },
+    "rights": "Bilim Akademiýa. Ähli hukuklar goralan.",
+    "madeIn": "Türkmenistanda ylham bilen ýasaldy",
+    "description": "Sanly bilim bilen geljegiňizi guruň. Hünärmen mugallymlardan onlaýn wideo kurslar."
+  }
+}

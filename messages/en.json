@@ -1,0 +1,41 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "courses": "Courses",
+      "portfolio": "Student Showcase",
+      "about": "About Us",
+      "contact": "Contact"
+    },
+    "auth": {
+      "login": "Sign In",
+      "register": "Sign Up"
+    }
+  },
+  "footer": {
+    "platform": {
+      "title": "Platform",
+      "home": "Home",
+      "courses": "Courses",
+      "teachers": "Instructors",
+      "pricing": "Pricing"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "careers": "Careers",
+      "blog": "Blog",
+      "contact": "Contact Us"
+    },
+    "support": {
+      "title": "Support",
+      "helpCenter": "Help Center",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "faq": "FAQ"
+    },
+    "rights": "Bilim Akademiýa. All rights reserved.",
+    "madeIn": "Crafted with inspiration in Turkmenistan",
+    "description": "Build your future with digital education. Online video courses from expert instructors."
+  }
+}
