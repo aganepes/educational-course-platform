@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { Star, ShoppingCart, Play, Clock, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import type { Course } from '@/lib/courses'
+import type { Course } from '@/data/courses'
 
 export function CourseCard({
   course,

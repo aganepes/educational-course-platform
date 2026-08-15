@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { courses, categories, type Course } from '@/lib/courses'
+import { courses, categories, type Course } from '@/data/courses'
 import { CourseCard } from '@/components/courses/course-card'
 import { VideoModal } from '@/components/video-modal'
 

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { CourseCard } from '@/components/courses/course-card'
 import { VideoModal } from '@/components/video-modal'
-import { courses, type Course } from '@/lib/courses'
+import { courses, type Course } from '@/data/courses'
 
 const groups = [
   { eyebrow: 'Iň täze kurslar', courses: courses.slice(0, 3) },

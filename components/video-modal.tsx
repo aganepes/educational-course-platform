@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
-import type { Course } from '@/lib/courses'
+import type { Course } from '@/data/courses'
 
 export function VideoModal({
   course,
