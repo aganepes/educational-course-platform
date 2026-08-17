@@ -1,0 +1,26 @@
+const topics = [
+    { label: '3ds Max', icon: '/logos/3ds-max.jpg', slug: '3ds-max' },
+    { label: 'AutoCAD', icon: '/logos/auto-cad.jpg', slug: 'autocad' },
+    { label: 'Revit', icon: '/logos/revit.png', slug: 'revit' },
+    { label: 'HTML', icon: '/logos/html.png', slug: 'html' },
+    { label: 'CSS', icon: '/logos/css.png', slug: 'css' },
+    { label: 'JavaScript', icon: '/logos/javascript.png', slug: 'javascript' },
+    { label: 'TypeScript', icon: '/logos/typescript.png', slug: 'typescript' },
+    { label: 'Node.js', icon: '/logos/nodejs.png', slug: 'nodejs' },
+    { label: 'React', icon: '/logos/react.png', slug: 'react' },
+    { label: 'Tailwind CSS', icon: '/logos/tailwind.png', slug: 'tailwind' },
+    { label: 'Express.js', icon: '/logos/express-js.png', slug: 'express-js' },
+    { label: 'MongoDB', icon: '/logos/mongo.png', slug: 'mongodb' },
+    { label: 'SQL', icon: '/logos/sql_racer.png', slug: 'sql' },
+    { label: 'Python', icon: '/logos/python.png', slug: 'python' },
+    { label: 'Flask', icon: '/logos/flask.png', slug: 'flask' },
+    { label: 'Redis', icon: '/logos/redis.png', slug: 'redis' },
+    { label: 'Prisma ORM', icon: '/logos/prisma-orm.jpg', slug: 'prisma' },
+    { label: 'TanStack', icon: '/logos/tanstack.png', slug: 'tanstack' },
+    { label: 'Expo', icon: '/logos/expo.png', slug: 'expo' },
+    { label: 'Docker', icon: '/logos/docker.png', slug: 'docker' },
+    { label: 'Git', icon: '/logos/git.png', slug: 'git' },
+    { label: 'GitHub', icon: '/logos/github.png', slug: 'github' },
+]
+
+export default topics;

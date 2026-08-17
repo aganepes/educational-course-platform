@@ -37,5 +37,51 @@
     "rights": "Bilim Akademiýa. Ähli hukuklar goralan.",
     "madeIn": "Türkmenistanda ylham bilen ýasaldy",
     "description": "Sanly bilim bilen geljegiňizi guruň. Hünärmen mugallymlardan onlaýn wideo kurslar."
+  },
+  "global": {
+    "hour": "sagat",
+    "teacher": "Mugallym",
+    "lessons": "ders",
+    "buyNow": "Satyn Al",
+    "rating": "Reýting",
+    "all":"Ählisi",
+    "categories": "Kategoriýalar",
+    "course":"kurs"
+  },
+  "course": {
+    "groups": {
+      "construction": {
+        "title": "Gurluşyk kurslary",
+        "description": "AutoCAD, 3ds Max we beýleki gurluşyk programmalary boýunça hünärli kurslar"
+      },
+      "programming": {
+        "title": "Programmirleme kurslary",
+        "description": "Frontend, backend, mobil we data ylym ugurlary boýunça doly göwrümli kurslar"
+      }
+    },
+    "category": {
+      "autocad": "AutoCAD",
+      "3dsmax": "3ds Max",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobil",
+      "data-science": "Data Ylym"
+    },
+    "subcategory": {
+      "autocad-2d": "AutoCAD 2D",
+      "autocad-3d": "AutoCAD 3D",
+      "3dsmax-modeling": "3ds Max Modelleme",
+      "3dsmax-rendering": "3ds Max Wizualizasiýa",
+      "frontend-react": "React",
+      "frontend-vue": "Vue.js",
+      "frontend-angular": "Angular",
+      "backend-django": "Django",
+      "backend-nodejs": "Node.js",
+      "backend-spring-boot": "Spring Boot",
+      "mobile-react-native": "React Native",
+      "mobile-flutter": "Flutter",
+      "data-science-python": "Python Data Ylym",
+      "data-science-r": "R Programmirleme"
+    }    
   }
 }

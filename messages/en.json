@@ -37,5 +37,51 @@
     "rights": "Bilim Akademiýa. All rights reserved.",
     "madeIn": "Crafted with inspiration in Turkmenistan",
     "description": "Build your future with digital education. Online video courses from expert instructors."
+  },
+  "global": {
+    "hour": "hours",
+    "teacher": "Instructor",
+    "lessons": "lessons",
+    "buyNow": "Buy Now",
+    "rating": "Rating",
+    "all":"All",
+    "categories": "categories",
+    "course":"course"
+  },
+  "course": {
+    "groups": {
+      "construction": {
+        "title": "Construction Courses",
+        "description": "Professional courses on AutoCAD, 3ds Max and other construction software"
+      },
+      "programming": {
+        "title": "Programming Courses",
+        "description": "Full-stack courses on frontend, backend, mobile development and data science"
+      }
+    },
+    "category": {
+      "autocad": "AutoCAD",
+      "3dsmax": "3ds Max",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "data-science": "Data Science"
+    },
+    "subcategory": {
+      "autocad-2d": "AutoCAD 2D",
+      "autocad-3d": "AutoCAD 3D",
+      "3dsmax-modeling": "3ds Max Modeling",
+      "3dsmax-rendering": "3ds Max Rendering",
+      "frontend-react": "React",
+      "frontend-vue": "Vue.js",
+      "frontend-angular": "Angular",
+      "backend-django": "Django",
+      "backend-nodejs": "Node.js",
+      "backend-spring-boot": "Spring Boot",
+      "mobile-react-native": "React Native",
+      "mobile-flutter": "Flutter",
+      "data-science-python": "Python Data Science",
+      "data-science-r": "R Programming"
+    }
   }
 }

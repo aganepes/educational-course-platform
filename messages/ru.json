@@ -37,5 +37,51 @@
     "rights": "Bilim Akademiýa. Все права защищены.",
     "madeIn": "Сделано с вдохновением в Туркменистане",
     "description": "Стройте свое будущее с цифровым обучением. Онлайн видеокурсы от экспертов."
+  },
+  "global": {
+    "hour": "часов",
+    "teacher": "Преподаватель",
+    "lessons": "уроков",
+    "buyNow": "Купить",
+    "rating": "Рейтинг",
+    "all":"Все",
+    "categories": "kатегории",
+    "course":"kурс"
+  },
+  "course": {
+    "groups": {
+      "construction": {
+        "title": "Курсы по строительству",
+        "description": "Профессиональные курсы по AutoCAD, 3ds Max и другим строительным программам"
+      },
+      "programming": {
+        "title": "Курсы по программированию",
+        "description": "Полноценные курсы по фронтенду, бэкенду, мобильной разработке и науке о данных"
+      }
+    },
+    "category": {
+      "autocad": "AutoCAD",
+      "3dsmax": "3ds Max",
+      "frontend": "Фронтенд",
+      "backend": "Бэкенд",
+      "mobile": "Мобильная",
+      "data-science": "Наука о данных"
+    },
+    "subcategory": {
+      "autocad-2d": "AutoCAD 2D",
+      "autocad-3d": "AutoCAD 3D",
+      "3dsmax-modeling": "3ds Max Моделирование",
+      "3dsmax-rendering": "3ds Max Визуализация",
+      "frontend-react": "React",
+      "frontend-vue": "Vue.js",
+      "frontend-angular": "Angular",
+      "backend-django": "Django",
+      "backend-nodejs": "Node.js",
+      "backend-spring-boot": "Spring Boot",
+      "mobile-react-native": "React Native",
+      "mobile-flutter": "Flutter",
+      "data-science-python": "Python Data Science",
+      "data-science-r": "R программирование"
+    }
   }
 }

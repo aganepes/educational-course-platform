@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { CourseCard } from '@/components/courses/course-card'
-import { VideoModal } from '@/components/video-modal'
+import { VideoModal } from '@/components/courses/video-modal'
 import { courses, type Course } from '@/data/courses'
 
 const groups = [
