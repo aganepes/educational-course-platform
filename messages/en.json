@@ -44,9 +44,52 @@
     "lessons": "lessons",
     "buyNow": "Buy Now",
     "rating": "Rating",
-    "all":"All",
+    "all": "All",
     "categories": "categories",
-    "course":"course"
+    "course": "course"
+  },
+  "home": {
+    "hero-section": {
+      "badge": "Digital Learning Platform",
+      "title": "Build Your Future with Digital Education",
+      "description": "From Frontend to Backend, DevOps to 3D Design — online video lessons from expert instructors working on real-world projects. Learn anytime, anywhere.",
+      "button": "Explore Courses",
+      "students_label": "students are learning with us"
+    },
+    "learning-paths": {
+      "title": "Popular Learning Paths",
+      "description": "Follow a clear path and master the tools used by top developers.",
+      "view_all": "View all",
+      "total_time": "Total time",
+      "hours": "hours",
+      "lessons": "lessons"
+    },
+    "topics-strip": {
+      "title": "Dive Deep into Every Layer of Engineering & Stack: 3D Design, Web Development, DevOps.",
+      "description": "Not demos — hands-on courses taught by professionals building real systems. Become a production-ready expert in 3D Architecture, Web & Mobile, Databases & DevOps.",
+      "logo_alt_suffix": "logo"
+    },
+    "testimonials": {
+      "badge": "Testimonials",
+      "title": "What our students say"
+    },
+    "cta-banner": {
+      "title": "Ready to start learning?",
+      "description": "Join us and take the first step towards your future. You can watch intro video lessons of our courses for free.",
+      "button": "Start for Free"
+    },
+    "teachers-section": {
+      "badge": "Why Choose Us",
+      "title": "Learn from the best instructors",
+      "description": "Our lessons are prepared by industry professionals with real-world experience. Learn at your own pace with 24/7 access, official certificates, and instructor support.",
+      "stats": {
+        "video_courses": "Hours of video lessons",
+        "teachers": "Expert instructors",
+        "students": "Active students",
+        "satisfaction": "Satisfaction rate"
+      },
+      "image_alt": "Teacher giving a lesson"
+    }
   },
   "course": {
     "groups": {

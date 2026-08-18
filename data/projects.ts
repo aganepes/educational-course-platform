@@ -174,7 +174,3 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: "https://github.com",
   },
 ];
-// ID boýunça maglumat tapýan funksiýa
-export function getProjectById(id: string): Project | undefined {
-  return PROJECTS_DATA.find((project) => project.id === id);
-}

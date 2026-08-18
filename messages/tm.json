@@ -44,9 +44,52 @@
     "lessons": "ders",
     "buyNow": "Satyn Al",
     "rating": "Reýting",
-    "all":"Ählisi",
+    "all": "Ählisi",
     "categories": "Kategoriýalar",
-    "course":"kurs"
+    "course": "kurs"
+  },
+  "home": {
+    "hero-section": {
+      "badge": "Sanly Bilim Platformasy",
+      "title": "Geljegiňizi Sanly Bilim Bilen Guruň",
+      "description": "Frontend-den Backend-e, DevOps-dan 3D Proýektirlemä çenli — hakyky taslamalar üstünde işleýän hünärmen mugallymlardan onlaýn wideo sapaklar. Islän wagtyň, islän ýeriňden öwren.",
+      "button": "Kurslary Gözden Geçir",
+      "students_label": "okuwçy biziň bilen öwrenýär"
+    },
+    "topics-strip": {
+      "title": "Inženerçiligiň we Stackyň Her Gatlagyna Çuňňur Giriň: 3D Proýektirleme we Web Development, DevOps.",
+      "description": "Demolar däl — hakyky ulgamlary we taslamalary gurýan hünärmenler tarapyndan berilýän amaly okuwlar. 3D Binagärlik hem-de Web & Mobil, Maglumat Bazalary & DevOps boýunça önümçilige taýýar hünärmen boluň.",
+      "logo_alt_suffix": "logosy"
+    },
+    "learning-paths": {
+      "title": "Meşhur Saýlanan Öwreniş Ýollary",
+      "description": "Aýdyň ýoly yzarlaň we öňdebaryjy döredijileriň ulanýan gurallaryny ussatlyk bilen öwreniň.",
+      "view_all": "Ählisini gör",
+      "total_time": "Jemi wagt",
+      "hours": "sagat",
+      "lessons": "sapuk"
+    },
+    "testimonials": {
+      "badge": "Pikirler",
+      "title": "Okuwçylarymyz näme diýýär"
+    },
+    "cta-banner": {
+      "title": "Öwrenmäge başlamaga taýýarmy?",
+      "description": "Bize goşulyň we geljegiňize ilkinji ädimi ataň. Kurslarymyzyň giriş wideo sapaklaryna mugt syn edip bilersiňiz.",
+      "button": "Mugt Başla"
+    },
+    "teachers-section": {
+      "badge": "Näme üçin biz",
+      "title": "Iň gowy mugallymlardan öwreniň",
+      "description": "Sapaklarymyz öz ugrunda hakyky iş tejribesi bolan hünärmenler tarapyndan taýýarlanýar. 24/7 elýeterlilik, resmi sertifikatlar we mugallym goldawy bilen öz depginiňizde öwreniň.",
+      "stats": {
+        "video_courses": "Sagat wideo sapak",
+        "teachers": "Hünärmen mugallym",
+        "students": "Işjeň okuwçy",
+        "satisfaction": "Kanagatlanma derejesi"
+      },
+      "image_alt": "Sapak berýän mugallym"
+    }
   },
   "course": {
     "groups": {
@@ -82,6 +125,6 @@
       "mobile-flutter": "Flutter",
       "data-science-python": "Python Data Ylym",
       "data-science-r": "R Programmirleme"
-    }    
+    }
   }
 }

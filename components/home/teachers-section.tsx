@@ -1,26 +1,33 @@
-import Image from 'next/image'
-import { Play } from 'lucide-react'
-
-const stats = [
-  { value: '300+', label: 'Sagat wideo sapak' },
-  { value: '15+', label: 'Hünärmen mugallym' },
-  { value: '500+', label: 'Işjeň okuwçy' },
-  { value: '98%', label: 'Kanagatlanma derejesi' },
-]
+import Image from "next/image";
+import { Play } from "lucide-react";
+import { useTranslations } from "next-intl";
+import data from "@/data/center-infor";
 
 export function TeachersSection() {
+  const t = useTranslations("home.teachers-section");
+
+  const stats = [
+    { value: `${data.videoCourseCount}+`, label: t("stats.video_courses") },
+    { value: `${data.teacherCount}+`, label: t("stats.teachers") },
+    { value: `${data.studentCount}+`, label: t("stats.students") },
+    { value: `${data.perfectCoursePrec}%`, label: t("stats.satisfaction") },
+  ];
+
   return (
-    <section id="about" className="border-y border-border bg-secondary/30 py-20">
+    <section
+      id="about"
+      className="border-y border-border bg-secondary/30 py-20"
+    >
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border">
+        <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-border">
           <Image
             src="/images/hero-lesson.png"
-            alt="Sapak berýän mugallym"
+            alt={t("image_alt")}
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-background/70 to-transparent" />
           <span className="absolute inset-0 flex items-center justify-center">
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
               <Play className="ml-1 h-6 w-6 fill-current" />
@@ -30,29 +37,29 @@ export function TeachersSection() {
 
         <div>
           <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-accent">
-            Näme üçin biz
+            {t("badge")}
           </p>
           <h2 className="mt-4 text-balance font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Iň gowy mugallymlardan öwreniň
+            {t("title")}
           </h2>
           <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-            Sapaklarymyz öz ugrunda hakyky iş tejribesi bolan hünärmenler
-            tarapyndan taýýarlanýar. 24/7 elýeterlilik, resmi sertifikatlar we
-            mugallym goldawy bilen öz depginiňizde öwreniň.
+            {t("description")}
           </p>
 
           <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="border-l-2 border-primary pl-4">
+            {stats.map((stat, index) => (
+              <div key={index} className="border-l-2 border-primary pl-4">
                 <dt className="font-display text-3xl font-extrabold text-foreground">
                   {stat.value}
                 </dt>
-                <dd className="mt-1 text-sm text-muted-foreground">{stat.label}</dd>
+                <dd className="mt-1 text-sm text-muted-foreground">
+                  {stat.label}
+                </dd>
               </div>
             ))}
           </dl>
         </div>
       </div>
     </section>
-  )
+  );
 }
