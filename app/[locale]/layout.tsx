@@ -53,7 +53,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <div className="min-h-screen bg-background">
+            <div className="min-h-screen bg-background max-w-7xl mx-auto">
               <SiteHeader />
               <main>{children}</main>
               <SiteFooter />

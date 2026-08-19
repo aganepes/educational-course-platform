@@ -10,7 +10,8 @@
     "auth": {
       "login": "Sign In",
       "register": "Sign Up"
-    }
+    },
+    "select-lang": "Select language"
   },
   "footer": {
     "platform": {
@@ -125,6 +126,143 @@
       "mobile-flutter": "Flutter",
       "data-science-python": "Python Data Science",
       "data-science-r": "R Programming"
+    },
+    "meta": {
+      "title": "Courses | Modern Education Center",
+      "description": "Online video courses in programming, design, marketing, data science, and languages. Browse by category and watch free previews."
+    },
+    "hero": {
+      "badge": "All Courses",
+      "title": "Explore Courses by Category",
+      "description": "Every course includes a free video preview — watch before you buy. Choose your path and start learning today."
     }
+  },
+  "contact": {
+    "metadata": {
+      "title": "Contact Us | Modern Education Center",
+      "description": "Contact us, enroll in courses, or visit our center. Our address, phone numbers, and social media channels."
+    },
+    "header": {
+      "badge": "Contact",
+      "title": "Get in Touch with Us",
+      "description": "Have questions or want to enroll in our courses? Fill out the form below or contact us directly."
+    },
+    "info": {
+      "address_title": "Our Address",
+      "address_detail": "Ashgabat city, Berkararlyk distr., Bitarap Turkmenistan ave., building 12",
+      "phone_title": "Phone Numbers",
+      "email_title": "Email",
+      "working_hours_title": "Working Hours",
+      "working_hours_detail": "Mon-Sat: 09:00 - 20:00 (Sunday: Closed)"
+    },
+    "social": {
+      "title": "Join Us on Social Media",
+      "description": "On TikTok and our other pages, we daily share new lessons, student projects, and useful tips.",
+      "tiktok_btn": "Follow on TikTok"
+    },
+    "form": {
+      "title": "Enroll in a Course",
+      "description": "Fill out the form and our managers will contact you shortly.",
+      "full_name_label": "Full Name",
+      "full_name_placeholder": "Example: Mekan Nurmedow",
+      "phone_label": "Phone Number",
+      "phone_placeholder": "+993 XX XX XX XX",
+      "select_course_label": "Course You Want to Choose",
+      "courses": {
+        "fullstack": "Full Stack Web Development",
+        "frontend": "Frontend (React / Next.js)",
+        "3dmax": "3D Max & Rendering",
+        "autocad": "AutoCAD & Architecture",
+        "graphic": "Graphic Design"
+      },
+      "note_label": "Notes or Preferences (Optional)",
+      "note_placeholder": "Write down if you have any preferences or additional questions...",
+      "submit_btn": "Submit Application",
+      "submitting": "Submitting...",
+      "success_message": "Your request has been successfully sent! Our managers will contact you shortly."
+    },
+    "map": {
+      "title": "Our Location on the Map",
+      "location": "Ashgabat city"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About Us | Modern Education Center",
+      "description": "Learn more about our center. Discover our IT and design education center, experienced instructors, and mission."
+    },
+    "hero": {
+      "badge": "Who We Are",
+      "title": "Preparing Specialists of the Future Together",
+      "description": "We offer high-quality practical education for youth and professionals in modern web technologies, design, and engineering."
+    },
+    "values": {
+      "title": "Our Core Principles",
+      "description": "Our educational system is designed to help students achieve the highest results.",
+      "items": {
+        "practical": {
+          "title": "Practical Learning",
+          "description": "We teach not just theory, but hands-on experience through real-world projects."
+        },
+        "support": {
+          "title": "Instructor Support",
+          "description": "Get 24/7 support from our instructors during and after the course."
+        },
+        "certificate": {
+          "title": "Certificate & Portfolio",
+          "description": "Graduates receive industry-standard certificates and a portfolio of completed projects."
+        }
+      }
+    },
+    "moment_slider": {
+      "title": "Our Study Programs",
+      "subtitle": "Popular practical courses tailored to advance your professional career"
+    },
+    "cta": {
+      "title": "Start Your Future Career With Us",
+      "description": "Contact us to enroll in courses or to get a detailed consultation.",
+      "button": "Explore Courses"
+    }
+  },
+  "portfolio": {
+    "student": "Student",
+    "pageTitle": "Student Works | Modern Education Center",
+    "header": {
+      "title": "Student Project Gallery",
+      "description": "The best projects prepared by our students in Programming, 3D Modeling, and Architecture/Drafting."
+    },
+    "stats": {
+      "render": "3D Render",
+      "renderUnit": "Project",
+      "autocad": "AutoCAD",
+      "autocadUnit": "Draft",
+      "web": "Web Apps",
+      "webUnit": "Code"
+    },
+    "search": {
+      "placeholder": "Search project, student, or skill..."
+    },
+    "categories": {
+      "all": "All",
+      "3d-max": "3D Max",
+      "autocad": "AutoCAD",
+      "full-stack": "Full Stack",
+      "frontend": "Frontend"
+    },
+    "notFound": {
+      "title": "No projects found",
+      "description": "Try changing your search query or selecting a different category."
+    },
+    "projectDetail": {
+    "backToGallery": "Back to gallery",
+    "featured": "Featured",
+    "author": "Author",
+    "github": "GitHub Code",
+    "liveDemo": "Live Demo",
+    "aboutProject": "About the Project",
+    "additionalGallery": "Additional Renders/Gallery",
+    "viewLarge": "View Large",
+    "usedTools": "Technologies Used"
+  }
   }
 }

@@ -14,7 +14,8 @@ import {
 import { AiFillGithub } from "react-icons/ai";
 import { Button } from "@/components/ui/button";
 import { use, useEffect, useState } from "react";
-import { ImageLightbox } from "@/components/image-lightbox";
+import { ImageLightbox } from "@/components/portfolio/image-lightbox";
+import { useLocale, useTranslations } from "next-intl";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -22,21 +23,35 @@ interface PageProps {
 
 export default function ProjectDetailPage({ params }: PageProps) {
   const { id } = use(params);
+  const locale = useLocale() as "tm" | "ru" | "en";
+  const t = useTranslations("portfolio.projectDetail");
+
   const project = getProjectById(id);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  if (!project) {
+    notFound();
+  }
+
+  const title = project.title[locale] || project.title.tm;
+  const description = project.description[locale] || project.description.tm;
+  const fullDetails = project.fullDetails
+    ? project.fullDetails[locale] || project.fullDetails.tm
+    : description;
+
+  const categoryType = project.category.type;
+  const categoryLabel =
+    project.category.label[locale] || project.category.label.tm;
 
   const openLightbox = (index: number) => {
     setActiveImageIndex(index);
     setLightboxOpen(true);
   };
 
-  if (!project) {
-    notFound();
-  }
   useEffect(() => {
-    document.title = "Okuwçy işleri | Häzirki zaman bilim merkezi";
-  }, []);
+    document.title = `${title} | Okuwçy işleri`;
+  }, [title]);
 
   return (
     <div className="min-h-screen bg-background p-6 md:p-12">
@@ -46,7 +61,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           href="/portfolio"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
-          <ArrowLeft className="h-4 w-4" /> Galereýa gaýdyp gelmek
+          <ArrowLeft className="h-4 w-4" /> {t("backToGallery")}
         </Link>
 
         {/* Sahypanyň Başlygy (Header) */}
@@ -54,31 +69,27 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                {project.category === "3D Max" && (
-                  <Box className="h-3.5 w-3.5" />
-                )}
-                {project.category === "AutoCAD" && (
+                {categoryType === "3d-max" && <Box className="h-3.5 w-3.5" />}
+                {categoryType === "autocad" && (
                   <Compass className="h-3.5 w-3.5" />
                 )}
-                {project.category === "Full Stack" && (
+                {(categoryType === "full-stack" ||
+                  categoryType === "frontend") && (
                   <Code2 className="h-3.5 w-3.5" />
                 )}
-                {project.category === "Frontend" && (
-                  <Code2 className="h-3.5 w-3.5" />
-                )}
-                {project.category}
+                {categoryLabel}
               </span>
               {project.featured && (
                 <span className="text-[10px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-full">
-                  Tapawutlanan
+                  {t("featured")}
                 </span>
               )}
             </div>
             <h1 className="text-3xl font-extrabold text-foreground md:text-4xl">
-              {project.title}
+              {title}
             </h1>
             <p className="flex items-center gap-2 text-sm text-muted-foreground">
-              <User className="h-4 w-4 text-primary" /> Awtor:{" "}
+              <User className="h-4 w-4 text-primary" /> {t("author")}:{" "}
               <span className="font-semibold text-foreground">
                 {project.studentName}
               </span>
@@ -90,14 +101,14 @@ export default function ProjectDetailPage({ params }: PageProps) {
             {project.githubUrl && (
               <a href={project.githubUrl} target="_blank" rel="noreferrer">
                 <Button variant="outline" size="sm" className="gap-2">
-                  <AiFillGithub className="h-4 w-4" /> GitHub Kod
+                  <AiFillGithub className="h-4 w-4" /> {t("github")}
                 </Button>
               </a>
             )}
             {project.liveUrl && (
               <a href={project.liveUrl} target="_blank" rel="noreferrer">
                 <Button size="sm" className="gap-2">
-                  <ExternalLink className="h-4 w-4" /> Live Demo
+                  <ExternalLink className="h-4 w-4" /> {t("liveDemo")}
                 </Button>
               </a>
             )}
@@ -109,7 +120,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-lg">
             <img
               src={project.imageUrl}
-              alt={project.title}
+              alt={title}
               className="h-auto max-h-125 w-full object-cover"
             />
           </div>
@@ -119,17 +130,17 @@ export default function ProjectDetailPage({ params }: PageProps) {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="md:col-span-2 space-y-4">
             <h2 className="text-xl font-bold text-foreground">
-              Taslama barada
+              {t("aboutProject")}
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              {project.fullDetails || project.description}
+              {fullDetails}
             </p>
 
             {/* Galereýa suratlary bar bolsa görkezmek */}
             {project.galleryImages && project.galleryImages.length > 0 && (
               <div className="space-y-3 pt-4">
                 <h3 className="text-sm font-semibold text-foreground">
-                  Goşmaça Renders/Suratlar
+                  {t("additionalGallery")}
                 </h3>
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                   {project.galleryImages.map((img: string, idx: number) => (
@@ -140,11 +151,11 @@ export default function ProjectDetailPage({ params }: PageProps) {
                     >
                       <img
                         src={img}
-                        alt={`${project.title} - ${idx + 1}`}
+                        alt={`${title} - ${idx + 1}`}
                         className="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity group-hover:opacity-100 flex items-center justify-center text-white text-xs font-semibold">
-                        Uly görmek
+                        {t("viewLarge")}
                       </div>
                     </div>
                   ))}
@@ -167,7 +178,7 @@ export default function ProjectDetailPage({ params }: PageProps) {
           {/* Ulanylan Skiller & Programmalar */}
           <div className="rounded-xl border border-border bg-card p-5 space-y-4 h-fit">
             <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
-              Ulanylan Programmalar
+              {t("usedTools")}
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.skills.map((skill) => (

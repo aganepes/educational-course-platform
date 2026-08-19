@@ -10,7 +10,8 @@
     "auth": {
       "login": "Giriş",
       "register": "Hasaba durmak"
-    }
+    },
+    "select-lang": "Dil seçiň"
   },
   "footer": {
     "platform": {
@@ -67,7 +68,7 @@
       "view_all": "Ählisini gör",
       "total_time": "Jemi wagt",
       "hours": "sagat",
-      "lessons": "sapuk"
+      "lessons": "sapak"
     },
     "testimonials": {
       "badge": "Pikirler",
@@ -125,6 +126,143 @@
       "mobile-flutter": "Flutter",
       "data-science-python": "Python Data Ylym",
       "data-science-r": "R Programmirleme"
+    },
+    "meta": {
+      "title": "Kurslar | Häzirki zaman bilim merkezi",
+      "description": "Programmirleme, dizaýn, marketing, data ylym we dil öwreniş boýunça onlaýn wideo kurslar. Kategoriýa boýunça saýlaň we mugt öňgörnüşe serediň."
+    },
+    "hero": {
+      "badge": "Ähli kurslar",
+      "title": "Kategoriýa boýunça kurslary öwreniň",
+      "description": "Her kursyň mugt wideo öňgörnüşi bar — satyn almazdan ozal görüň. Isleýän ugryňyzy saýlaň we şu gün öwrenmäge başlaň."
+    }
+  },
+  "contact": {
+    "metadata": {
+      "title": "Habarlaşmak | Häzirki zaman bilim merkezi",
+      "description": "Biz bilen habarlaşyň, kurslara ýazylyň ýa-da merkezimize myhman boluň. Salgymyz, telefon belgilerimiz we sosial media sahypalarymyz."
+    },
+    "header": {
+      "badge": "Habarlaşmak",
+      "title": "Biz Bilen Aragatnaşyga Geçin",
+      "description": "Soraglaryňyz barmy ýa-da kurslarymyza ýazylmak isleýärsiňizmi? Aşakdaky formany dolduryň ýa-da gönümel habarlaşyň."
+    },
+    "info": {
+      "address_title": "Salgymyz",
+      "address_detail": "Aşgabat ş., Berkararlyq etr., Bitarap Türkmenistan şaýoly, 12-nji jaý",
+      "phone_title": "Telefon belgilerimiz",
+      "email_title": "E-poçta",
+      "working_hours_title": "Iş wagty",
+      "working_hours_detail": "Duş-Şen: 09:00 - 20:00 (Ýekşenbe: Dynç)"
+    },
+    "social": {
+      "title": "Sosial Mediada Bize Goşulyň",
+      "description": "TikTok we beýleki sahypalarymyzda gündelik täze sapaklar, talyplaryň taslamalary we peýdaly maslahatlar paýlaşylýar.",
+      "tiktok_btn": "TikTok-da Yzarlaň"
+    },
+    "form": {
+      "title": "Kursa Ýazylmak",
+      "description": "Formany dolduryň, menedjerlerimiz gysga wagtyň içinde siziň bilen habarlaşarlar.",
+      "full_name_label": "Adyňyz we Familiýaňyz",
+      "full_name_placeholder": "Meselem: Mekan Nurmedow",
+      "phone_label": "Telefon Belgiňiz",
+      "phone_placeholder": "+993 XX XX XX XX",
+      "select_course_label": "Saýlamak Isleýän Kursyňyz",
+      "courses": {
+        "fullstack": "Full Stack Web Development",
+        "frontend": "Frontend (React / Next.js)",
+        "3dmax": "3D Max & Rendering",
+        "autocad": "AutoCAD & Arhitektura",
+        "graphic": "Grafik Dizaýn"
+      },
+      "note_label": "Bellik ýa-da Halamalar (Hökmany däl)",
+      "note_placeholder": "Islegleriňiz ýa-da goşmaça soraglaryňyz bar bolsa ýazyň...",
+      "submit_btn": "Haýyşnamany Ugratmak",
+      "submitting": "Ugradylýar...",
+      "success_message": "Haýyşnamaňyz üstünlikli ugradyldy! Menedjerlerimiz basym siziň bilen habarlaşarlar."
+    },
+    "map": {
+      "title": "Karta Üsti Bilen Ýerleşýän Ýerimiz",
+      "location": "Aşgabat şäheri"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Biz barada | Häzirki zaman bilim merkezi",
+      "description": "Biz barada giňişleýin maglumat. Ýokary hilli IT we gurluşy dizaýn bilim berýän merkezimiz, tejribeli mugallymlarymyz we hedeflerimiz bilen tanyşyň."
+    },
+    "hero": {
+      "badge": "Biz kim?",
+      "title": "Gelejegiň Hünärmenlerini Bilelikde Taýýarlaýarys",
+      "description": "Biz zamanagöz web tehnologiýalary, dizaýn we inženerçilik ugurlary boýunça ýaşlara we hünärmenlere ýokary hilli amaly bilim hödürleýäris."
+    },
+    "values": {
+      "title": "Biziň Esasy Ýörelgelerimiz",
+      "description": "Bilim berliş ulgamymyz talyplaryň iň ýokary netijä ýetmegi üçin düzülgendir.",
+      "items": {
+        "practical": {
+          "title": "Amaly Bilim",
+          "description": "Diňe teoriýa däl, eýsem hakyky taslamalar (Real Projects) üzere amaly tejribe öwredýäris."
+        },
+        "support": {
+          "title": "Mugallym Goldawy",
+          "description": "Sapaklaryň dowamynda we sonundan soň mugallymlarymyz bilen 24/7 aragatnaşyk saklap bilersiňiz."
+        },
+        "certificate": {
+          "title": "Sertifikat we Portfolio",
+          "description": "Kursy üstünlikli tamamlan talyplara halkara standartlaryna gabat gelýän sertifikat we portfolio berilýär."
+        }
+      }
+    },
+    "moment_slider": {
+      "title": "Biziň Okuw Uglarymyz",
+      "subtitle": "Karyeraňyzy ösdürmek üçin taýýarlanan meşhur amaly kurslarymyz"
+    },
+    "cta": {
+      "title": "Gelejekki Karyeraňyzy Biz Bilen Başlaň",
+      "description": "Kurslarymyza ýazylmak ýa-da giňişleýin konsulýatasyýa almak üçin biziň bilen habarlaşyp bilersiňiz.",
+      "button": "Kurslary Gör"
+    }
+  },
+  "portfolio": {
+    "student": "Talyp",
+    "pageTitle": "Okuwçy işleri | Häzirki zaman bilim merkezi",
+    "header": {
+      "title": "Talyplaryň Taslama Galereýasy",
+      "description": "Programmalaşdyrma, 3D Modelleme we Arhitektura/Çyzgy ugurlary boýunça talyplarymyzyň taýýarlan iň gowy taslamalary."
+    },
+    "stats": {
+      "render": "3D Render",
+      "renderUnit": "Taslama",
+      "autocad": "AutoCAD",
+      "autocadUnit": "Çyzgy",
+      "web": "Web Apps",
+      "webUnit": "Kod"
+    },
+    "search": {
+      "placeholder": "Taslama, talyp ýa-da programma gözle..."
+    },
+    "categories": {
+      "all": "Ähli",
+      "3d-max": "3D Max",
+      "autocad": "AutoCAD",
+      "full-stack": "Full Stack",
+      "frontend": "Frontend"
+    },
+    "notFound": {
+      "title": "Hiç hili taslama tapylmady",
+      "description": "Gözleg sözüňizi üýtgedip ýa-da başga kategoriýa saýlap görüň."
+    },
+    "projectDetail": {
+      "backToGallery": "Galereýa gaýdyp gelmek",
+      "featured": "Tapawutlanan",
+      "author": "Awtor",
+      "github": "GitHub Kod",
+      "liveDemo": "Live Demo",
+      "aboutProject": "Taslama barada",
+      "additionalGallery": "Goşmaça Renders/Suratlar",
+      "viewLarge": "Uly görmek",
+      "usedTools": "Ulanylan Programmalar"
     }
   }
 }

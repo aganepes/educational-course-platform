@@ -1,42 +1,55 @@
-import Link from 'next/link'
-import { Project } from '@/data/projects'
-import { Box, Compass, Code2 } from 'lucide-react'
+import Link from "next/link";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import { Project } from "@/data/projects";
+import { Box, Compass, Code2 } from "lucide-react";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const locale = useLocale() as "tm" | "ru" | "en";
+  const t = useTranslations("portfolio");
+
+  // Locale boýunça maglumatlary almak
+  const title = project.title[locale] || project.title.tm;
+  const description = project.description[locale] || project.description.tm;
+  const categoryLabel = project.category.label[locale] || project.category.label.tm;
+  const categoryType = project.category.type;
+
   return (
     <Link
-      href={`/portfolio/${project.id}`}
+      href={`/${locale}/portfolio/${project.id}`}
       className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all hover:shadow-md hover:border-primary/40"
     >
       <div>
         {/* Prevyu suraty */}
         {project.imageUrl && (
           <div className="relative h-48 w-full overflow-hidden bg-muted">
-            <img
+            <Image
               src={project.imageUrl}
-              alt={project.title}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
         )}
 
         <div className="p-5">
           <div className="flex items-center justify-between mb-3">
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-              {project.category === '3D Max' && <Box className="h-3 w-3" />}
-              {project.category === 'AutoCAD' && <Compass className="h-3 w-3" />}
-              {(project.category === 'Full Stack' || project.category === 'Frontend') && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+              {categoryType === "3d-max" && <Box className="h-3 w-3" />}
+              {categoryType === "autocad" && <Compass className="h-3 w-3" />}
+              {(categoryType === "full-stack" || categoryType === "frontend") && (
                 <Code2 className="h-3 w-3" />
               )}
-              {project.category}
+              {categoryLabel}
             </span>
           </div>
 
           <h3 className="text-lg font-bold text-card-foreground group-hover:text-primary transition-colors">
-            {project.title}
+            {title}
           </h3>
           <p className="text-xs text-muted-foreground mt-1 mb-4 line-clamp-2">
-            {project.description}
+            {description}
           </p>
 
           <div className="flex flex-wrap gap-1.5">
@@ -54,9 +67,12 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="border-t border-border px-5 py-3 flex items-center justify-between bg-muted/20">
         <span className="text-xs text-muted-foreground font-medium">
-          Talyp: <span className="text-foreground font-semibold">{project.studentName}</span>
+          {t("student")}:{" "}
+          <span className="text-foreground font-semibold">
+            {project.studentName}
+          </span>
         </span>
       </div>
     </Link>
-  )
+  );
 }

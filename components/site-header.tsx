@@ -61,7 +61,7 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-6 lg:gap-8 md:flex" aria-label="Main navigations">
+        <nav className="hidden items-center gap-6 lg:gap-8 min-[1080px]:flex" aria-label="Main navigations">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -74,14 +74,14 @@ export function SiteHeader() {
         </nav>
 
         {/* Actions (Theme, Language, Auth) */}
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-2 min-[1080px]:flex">
           
           {/* Theme Toggle Button */}
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="h-9 w-9 rounded-md transition-all"
+            className="h-9 w-9 rounded-md transition-all cursor-pointer"
             aria-label="Toggle theme"
           >
             <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-accent" />
@@ -95,7 +95,7 @@ export function SiteHeader() {
                 variant="ghost" 
                 size="sm" 
                 disabled={isPending}
-                className="flex items-center gap-2 px-2.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:bg-accent hover:text-foreground"
+                className="flex items-center gap-2 px-2.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:bg-accent hover:text-foreground cursor-pointer"
               >
                 <Globe className="h-4 w-4 text-primary" />
                 <span>{locale}</span>
@@ -121,22 +121,22 @@ export function SiteHeader() {
           <div className="h-4 w-px bg-border mx-1" />
 
           {/* Auth Buttons */}
-          <Button variant="ghost" className="text-foreground hover:bg-secondary">
+          <Button variant="ghost" className="text-foreground hover:bg-secondary cursor-pointer">
             {t('auth.login')}
           </Button>
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
             {t('auth.register')}
           </Button>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 min-[1080px]:hidden">
           {/* Mobile Theme Switcher */}
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="h-9 w-9"
+            className="h-9 w-9 cursor-pointer"
           >
             <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -145,7 +145,7 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground cursor-pointer"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
           >
@@ -156,20 +156,20 @@ export function SiteHeader() {
 
       {/* Mobile Drawer */}
       {open && (
-        <div className="border-t border-border bg-background md:hidden">
+        <div className="border-t border-border bg-background min-[1080px]:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4" aria-label="Mobile navigations">
             
             {/* Mobile Language Selection */}
             <div className="flex items-center justify-between px-3 py-2 text-xs text-muted-foreground font-semibold">
               <span className="flex items-center gap-1.5">
-                <Globe className="h-4 w-4" /> Dil seçiň:
+                <Globe className="h-4 w-4" /> {t('select-lang')}:
               </span>
               <div className="flex gap-1">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
-                    className={`px-2 py-1 rounded text-xs uppercase font-bold transition-colors ${
+                    className={`px-2 py-1 rounded text-xs uppercase font-bold transition-colors cursor-pointer ${
                       locale === lang.code
                         ? 'bg-primary text-primary-foreground'
                         : 'bg-secondary text-secondary-foreground hover:bg-accent'
@@ -196,8 +196,8 @@ export function SiteHeader() {
             ))}
 
             <div className="mt-2 flex flex-col gap-2">
-              <Button variant="outline">{t('auth.login')}</Button>
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button variant="outline" className="cursor-pointer">{t('auth.login')}</Button>
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
                 {t('auth.register')}
               </Button>
             </div>

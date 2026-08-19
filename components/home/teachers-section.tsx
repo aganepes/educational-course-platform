@@ -3,7 +3,7 @@ import { Play } from "lucide-react";
 import { useTranslations } from "next-intl";
 import data from "@/data/center-infor";
 
-export function TeachersSection() {
+export default function TeachersSection() {
   const t = useTranslations("home.teachers-section");
 
   const stats = [
