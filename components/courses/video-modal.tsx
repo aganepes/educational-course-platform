@@ -98,7 +98,8 @@ export function VideoModal({
           <MediaPlayer
             ref={playerRef}
             title={course.title[local]}
-            src={`/api/courses/${course.id}/video/public`}
+            // src={`/api/courses/${course.id}/video/public`}
+            src=""
             poster={course.image}
             autoplay
             playsInline
