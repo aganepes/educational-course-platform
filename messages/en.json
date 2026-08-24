@@ -9,7 +9,8 @@
     },
     "auth": {
       "login": "Sign In",
-      "register": "Sign Up"
+      "register": "Sign Up",
+      "logout": "Log out"
     },
     "select-lang": "Select language"
   },
@@ -135,6 +136,12 @@
       "badge": "All Courses",
       "title": "Explore Courses by Category",
       "description": "Every course includes a free video preview — watch before you buy. Choose your path and start learning today."
+    },
+    "player":{
+      "preview_ended_title": "Free preview ended!",
+    "preview_ended_desc": "Purchase the full course to get unlimited access to all lessons.",
+    "buy_now": "Buy Course",
+    "replay_preview": "Watch again"
     }
   },
   "contact": {
@@ -264,5 +271,69 @@
     "viewLarge": "View Large",
     "usedTools": "Technologies Used"
   }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Log in to your account to continue learning",
+      "identifierLabel": "Username, Email or Phone",
+      "identifierPlaceholder": "Username, email or phone",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Your password",
+      "submitButton": "Sign In",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Register",
+      "successRegistered": "Successfully registered! You can now log in with your credentials.",
+      "defaultError": "Failed to log in. Please check your credentials."
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join our learning platform and start your journey",
+      "usernameLabel": "Username *",
+      "usernamePlaceholder": "E.g.: Mekan_20",
+      "emailLabel": "Email address",
+      "emailOptional": "(Optional)",
+      "emailPlaceholder": "example@mail.com",
+      "phoneLabel": "Phone number",
+      "phoneOptional": "(Optional)",
+      "phonePlaceholder": "+993 65 123456",
+      "passwordLabel": "Password *",
+      "passwordPlaceholder": "At least 6 characters",
+      "submitButton": "Register",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign In",
+      "defaultError": "An error occurred during registration.",
+      "emailOrPhoneRequired": "Please provide either an email address or a phone number!",
+      "canRegisterNow": "Your account has been created. You can now log in."
+    },
+    "common": {
+      "securityBadge": "Your personal data is securely protected",
+      "networkError": "Could not connect to the server. Please try again."
+    }
+  },
+  "error-message": {
+    "has-username": "This username is already taken!",
+    "has-email": "This email address is already in use!",
+    "has-phone": "This phone number is already in use!",
+    "has-username-email-phone": "Username, email, or phone number is already taken!",
+    "server-error": "A server error occurred",
+    "data-error": "Invalid input data",
+    "password-error": "Incorrect password",
+    "user-not-found":"User not found",
+    "data-not-found":"Data not found",
+    "invalid_format": "Invalid format"
+  },
+  "success-message": {
+    "success-register": "Successfully registered!",
+    "success-login": "Successfully logged in",
+    "logout": "Successfully logged out"
+  },
+  "validation": {
+    "usernameMin": "Username must be at least 3 characters",
+    "invalidEmail": "Invalid email address",
+    "phoneMin": "Invalid phone number",
+    "phoneRegex": "Invalid phone format (+993xxxxxxxx)",
+    "passwordMin": "Password must be at least 6 characters",
+    "emailOrPhoneRequired": "Please provide either an email address or a phone number!"
   }
 }

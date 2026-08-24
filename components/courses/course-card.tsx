@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useLocale, useTranslations } from "next-intl";
 import { instructorData } from "@/data/instructors";
 import { courses, type Course, type Locale, courseConfig } from "@/data/courses";
+import Link from "next/link";
 
 type CourseCardProps = {
   course: Course;
@@ -18,7 +19,7 @@ export function CourseCard({
 }: CourseCardProps) {
   const t = useTranslations();
   const locale = useLocale() as Locale;
-
+  const id = course.id;
   const title = course.title[locale];
   const instructor = instructorData[course.instructorId].name[locale];
 
@@ -84,9 +85,9 @@ export function CourseCard({
           </div>
         </div>
 
-        <h3 className="mt-3 text-balance font-display text-lg font-bold leading-snug text-foreground">
+        <Link href={`/${locale}/courses/${id}`} className="mt-3 text-balance font-display text-lg font-bold leading-snug text-foreground">
           {title}
-        </h3>
+        </Link>
 
         <p className="mt-2 text-sm text-muted-foreground">
           {t("global.teacher")}:{" "}

@@ -6,8 +6,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import React from "react";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -54,9 +52,7 @@ export default async function RootLayout({
         >
           <NextIntlClientProvider messages={messages}>
             <div className="min-h-screen bg-background max-w-7xl mx-auto">
-              <SiteHeader />
-              <main>{children}</main>
-              <SiteFooter />
+              {children}
             </div>
             {process.env.NODE_ENV === "production" && <Analytics />}
           </NextIntlClientProvider>

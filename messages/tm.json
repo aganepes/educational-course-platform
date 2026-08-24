@@ -9,7 +9,8 @@
     },
     "auth": {
       "login": "Giriş",
-      "register": "Hasaba durmak"
+      "register": "Hasaba durmak",
+      "logout":"Çykmak"
     },
     "select-lang": "Dil seçiň"
   },
@@ -135,6 +136,12 @@
       "badge": "Ähli kurslar",
       "title": "Kategoriýa boýunça kurslary öwreniň",
       "description": "Her kursyň mugt wideo öňgörnüşi bar — satyn almazdan ozal görüň. Isleýän ugryňyzy saýlaň we şu gün öwrenmäge başlaň."
+    },
+    "player":{
+      "preview_ended_title":"Mugt syn wagty gutardy!",
+      "preview_ended_desc":"Kursyň ähli sapaklaryny doly we päsgelsiz görmek üçin dowamyny satyn alyň.",
+      "buy_now":"Kursy Satyn Al",
+      "replay_preview":"Täzeden syn et"
     }
   },
   "contact": {
@@ -264,5 +271,69 @@
       "viewLarge": "Uly görmek",
       "usedTools": "Ulanylan Programmalar"
     }
+  },
+  "auth": {
+    "login": {
+      "title": "Ulgama girmek",
+      "subtitle": "Öz hesabyňyza girip bilim almagy dowam ediň",
+      "identifierLabel": "Ulanyjy ady, Email ýa-da Telefon",
+      "identifierPlaceholder": "Username, email ýa-da telefon",
+      "passwordLabel": "Parol",
+      "passwordPlaceholder": "Parolyňyz",
+      "submitButton": "Giriş etmek",
+      "noAccount": "Hesabyňyz ýokmy?",
+      "registerLink": "Agza bolmak",
+      "successRegistered": "Üstünlikli agza boldyňyz! Şahsy maglumatlaryňyz bilen ulgama girip bilersiňiz.",
+      "defaultError": "Giriş edip bolmady. Maglumatlaryňyzy barlaň."
+    },
+    "register": {
+      "title": "Hasap döretmek",
+      "subtitle": "Bilim platformamyza goşulyň we okuwyňyzy başlaň",
+      "usernameLabel": "Ulanyjy ady (Username) *",
+      "usernamePlaceholder": "Meselem: Mekan_20",
+      "emailLabel": "E-poçta",
+      "emailOptional": "(Islege görä)",
+      "emailPlaceholder": "mysal@mail.com",
+      "phoneLabel": "Telefon belgisi",
+      "phoneOptional": "(Islege görä)",
+      "phonePlaceholder": "+993 65 123456",
+      "passwordLabel": "Parol *",
+      "passwordPlaceholder": "Iň az 6 simwol",
+      "submitButton": "Agza bolmak",
+      "hasAccount": "Eýýäm hesabyňyz barmy?",
+      "loginLink": "Giriş etmek",
+      "defaultError": "Ulgama ýazylmakda näsazlyk ýüze çykdy.",
+      "emailOrPhoneRequired": "Email ýa-da Telefon belgisinden haýsy hem bolsa birini girizmeli!",
+      "canRegisterNow": "Hesabyňyz döredildi. Indi ulgama girip bilersiňiz."
+    },
+    "common": {
+      "securityBadge": "Şahsy maglumatlaryňyz ygtybarly goralýar",
+      "networkError": "Serwer bilen baglanyşyk saklap bolmady. Ýaňadan synanyşyň."
+    }
+  },
+  "error-message": {
+    "has-username": "Bu username eýýäm alnan!",
+    "has-email": "Bu email adresi eýýäm ulanylýar!",
+    "has-phone": "Bu telefon belgisi eýýäm ulanylýar!",
+    "has-username-email-phone": "Username, email ýa-da telefon belgisi eýýäm alnan!",
+    "server-error": "Serwer näsazlygy ýüze çykdy",
+    "data-error": "Maglumatlar nädogry girizildi",
+    "password-error": "Parol nädogry",
+    "user-not-found":"Ulanyjy tapylmady",
+    "data-not-found":"Maglumat tapylmady",
+    "invalid_format": "Format nädogry"
+  },
+  "success-message": {
+    "success-register": "Üstünlikli agza boldyňyz!",
+    "success-login": "Ulgama üstünlikli girildi",
+    "logout": "Ulgamdan çykyldy"
+  },
+  "validation": {
+    "usernameMin": "Username azyndan 3 simwol bolmaly",
+    "invalidEmail": "Nädogry email adresi",
+    "phoneMin": "Telefon belgisi nädogry",
+    "phoneRegex": "Nädogry telefon formady (+993xxxxxxxx)",
+    "passwordMin": "Parol azyndan 6 simwol bolmaly",
+    "emailOrPhoneRequired": "Email ýa-da Telefon belgisinden haýsy hem bolsa birini girizmeli!"
   }
 }

@@ -1,0 +1,2 @@
+courses/buy/:id
+course level goymaly.

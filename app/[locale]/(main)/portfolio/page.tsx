@@ -111,7 +111,7 @@ export default function ProjectGalleryDashboard() {
       </div>
 
       {/* Süzgüçler (Gözleg we Kategoriýalar) */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 flex-wrap sm:flex-row sm:items-center sm:justify-between">
         {/* Search Input */}
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
