@@ -1,89 +1,76 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { PassThrough } from "stream";
+import { PassThrough, Readable } from "stream";
 import ffmpeg from "fluent-ffmpeg";
-import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
+// import ffmpegInstaller from "@ffmpeg-installer/ffmpeg";
+import type { RouteVideoParams } from "../../route";
+import { courses } from "@/database/schemas/courses";
+import { eq } from "drizzle-orm";
+import { db } from "@/database";
 
-ffmpeg.setFfmpegPath(ffmpegInstaller.path);
+// ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 
-interface RouteParams {
-  params: Promise<{ videoId: string }>;
-}
+export async function GET(request: NextRequest, { params }: RouteVideoParams) {
+  try {
+    const { id } = await params;
 
-// GET: /api/courses/:ID/video/public
-export async function GET(request: NextRequest, { params }: RouteParams) {
-  const { videoId } = await params;
+    const dbCourse = await db.select().from(courses).where(eq(courses.id, id));
+    if (!dbCourse.length) {
+      return NextResponse.json({ success: false, message: "error-message.data-not-found" }, { status: 404 });
+    }
 
-  // 1. AUTH CHECK: Session / Cookie barlagy
-  const token = request.cookies.get("session_token")?.value;
+    const videoFileName = dbCourse[0].videoURL;
+    const publicDurationSeconds = dbCourse[0]?.publicDurationSeconds ?? 360;
+    const startTime = dbCourse[0].startTime;
 
-  if (!token) {
-    return NextResponse.json(
-      { error: "Ruhsat berilmedi. Ilki login boluň." },
-      { status: 401 }
-    );
-  }
+    const videoPath = path.join(process.cwd(), "storage/videos/", videoFileName);
 
-  // 2. DATABASE CHECK (Mysal üçin)
-  // Baza-dan şu videoId üçin video faýlyň adyny we mugt görkezilmeli sekuntyny (publicDuration) alyň.
-  // Mysal üçin: DB-den publicDurationSeconds = 360 (6 minut) ýa-da 600 (10 minut) diýip geldi.
-  const videoFileName = `${videoId}.mp4`;
-  const publicDurationSeconds = 360; // DB-den alynýan dynamic wagt (sekundda)
+    if (!fs.existsSync(videoPath)) {
+      return NextResponse.json({ success: false, message: "error-message.data-not-found" }, { status: 404 });
+    }
 
-  const videoPath = path.join(process.cwd(), "public/videos", videoFileName);
+    const passThroughStream = new PassThrough();
 
-  if (!fs.existsSync(videoPath)) {
-    return NextResponse.json({ error: "Video tapylmady" }, { status: 404 });
-  }
-
-  // 3. FLUENT-FFMPEG STREAMA SAZLAMAK
-  // Node.js PassThrough stream döredýäris (FFmpeg-iň çykyşyny almak üçin)
-  const passThroughStream = new PassThrough();
-
-  const command = ffmpeg(videoPath)
-    .setStartTime(0)
-    .setDuration(publicDurationSeconds) // Baza-dan gelen dynamic wagt
-    .format("mp4")
-    .outputOptions([
-      "-movflags frag_keyframe+empty_moov+default_base_moof",
-      "-preset ultrafast", // CPU ýüküni azaltmak we çalt stream etmek üçin
-    ])
-    .on("error", (err) => {
-      console.error("FFmpeg säwlik çykardy:", err.message);
-      passThroughStream.destroy(err);
-    });
-
-  // Stream-i PassThrough pibine ugratmak
-  command.pipe(passThroughStream, { end: true });
-
-  // 4. Node.js Stream-i Web ReadableStream-e öürmek (Next.js Response üçin)
-  const webStream = new ReadableStream({
-    start(controller) {
-      passThroughStream.on("data", (chunk: Buffer) => {
-        controller.enqueue(chunk);
+    const command = ffmpeg(videoPath)
+      .setStartTime(startTime)
+      .setDuration(publicDurationSeconds)
+      .format("mp4")
+      .videoCodec("libx264") 
+      .audioCodec("aac")
+      .outputOptions([
+        "-movflags frag_keyframe+empty_moov+default_base_moof",
+        "-preset ultrafast",
+        "-tune zerolatency",
+      ])
+      .on("error", (err) => {
+        if (!err.message.includes("Output stream closed")) {
+          console.error("FFmpeg error:", err.message);
+        }
+        passThroughStream.destroy(err);
       });
 
-      passThroughStream.on("end", () => {
-        controller.close();
-      });
+    command.pipe(passThroughStream, { end: true });
 
-      passThroughStream.on("error", (err) => {
-        controller.error(err);
-      });
-    },
-    cancel() {
-      // Player ýapylsa ýa-da ulanyjy sahypadan çyksa FFmpeg-i saklamak
+    
+    const webStream = Readable.toWeb(passThroughStream);
+
+    // Brauzer ulanýan baglanyşygy kesse (Cancel etse) FFmpeg prosesini saklamak
+    request.signal.addEventListener("abort", () => {
       command.kill("SIGKILL");
       passThroughStream.destroy();
-    },
-  });
+    });
 
-  return new NextResponse(webStream, {
-    status: 200,
-    headers: {
-      "Content-Type": "video/mp4",
-      "Cache-Control": "no-store, no-cache, must-revalidate",
-    },
-  });
+    return new NextResponse(webStream as ReadableStream, {
+      status: 200,
+      headers: {
+        "Content-Type": "video/mp4",
+        "Cache-Control": "no-store, no-cache, must-revalidate"
+      },
+    });
+
+  } catch (error) {
+    console.error("GET /api/courses/:ID/video/public error:", error);
+    return NextResponse.json({ success: false, message: "error-message.server-error" }, { status: 500 });
+  }
 }

@@ -11,7 +11,7 @@ export interface AboutMomentItem {
     ru: string;
   en: string;
   };
-  date: string; // Ýyl ýa-da sene
+  date: string;
   category: {
     tm: string;
     ru: string;

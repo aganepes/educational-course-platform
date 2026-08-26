@@ -17,7 +17,6 @@ const PUBLIC_ROUTES = [
     "/api/auth/register",
     "/api/auth/refresh",
     "/api/auth/logout"
-
 ];
 
 const AUTH_ROUTES = ["/login", "/register"];
@@ -32,19 +31,20 @@ export async function withAuth(request: NextRequest) {
     let newAccessTokenToSet: string | null = null;
 
     // Access Token-i barlaýarys
+    let payload: { userId: string; sessionId: string } | null = null;
     if (accessToken) {
-        const payload = await verifyAccessToken(accessToken);
+        payload = await verifyAccessToken(accessToken);
         if (payload) isAuthenticated = true;
     }
 
     // Access Token geçersiz, ýöne Refresh Token bar bolsa -> Auto-Refresh
     if (!isAuthenticated && refreshToken) {
         try {
-            const { payload } = await jwtVerify(refreshToken, REFRESH_SECRET, {
+            const token = await jwtVerify(refreshToken, REFRESH_SECRET, {
                 algorithms: ["HS256"],
             });
-            const { userId, sessionId } = payload as { userId: string; sessionId: string };
-
+            payload = token.payload as any;
+            const { userId, sessionId } = payload!;
             newAccessTokenToSet = await signAccessToken({ userId, sessionId });
             isAuthenticated = true;
         } catch {
@@ -77,7 +77,13 @@ export async function withAuth(request: NextRequest) {
     }
 
     // Eger täze Access Token alynan bolsa, ony Header arkaly indiki middleware-e berýäris
-    const response = NextResponse.next();
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-user-id", payload!.userId);
+    const response = NextResponse.next({
+        request: {
+            headers: requestHeaders,
+        }
+    });
     if (newAccessTokenToSet) {
         setAccessTokenCookie(response, newAccessTokenToSet)
     }

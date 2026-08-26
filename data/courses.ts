@@ -133,25 +133,12 @@ export type Course = {
   instructorId: InstructorId
   rating: string
   durationHours: number
+  publicDurationSeconds: number
+  level?: string;
   lessons: number
   price: number
-  video: string
+  videoURL: string
 }
-
-// Wideo URL-ler
-const SAMPLE_1 =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-const SAMPLE_2 =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
-const SAMPLE_3 =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
-
-/*   const SAMPLE_1 =
-  "/Learn-Tanstack-Start-in-30-Minutes.mp4"
-const SAMPLE_2 =
-  "/Learn-Tanstack-Start-in-30-Minutes.mp4"
-const SAMPLE_3 =
-  "/Learn-Tanstack-Start-in-30-Minutes.mp4" */
 
 export const courses: Course[] = [
   // ========================
@@ -159,7 +146,7 @@ export const courses: Course[] = [
   // ========================
   {
     id: "autocad-2d-1",
-    image: "/images/courses/autocad-2d.png",
+    image: "autocad-2d.png",
     group: "construction",
     category: "autocad",
     subcategory: "autocad-2d",
@@ -171,13 +158,14 @@ export const courses: Course[] = [
     instructorId: "serdar-hayydow",
     rating: "4.8",
     durationHours: 16,
+    publicDurationSeconds: 360,
     lessons: 72,
     price: 550,
-    video: SAMPLE_1,
+    videoURL: '/api/courses/autocad-2d-1/video/private',
   },
   {
     id: "autocad-3d-1",
-    image: "/images/courses/autocad-3d.png",
+    image: "autocad-3d.png",
     group: "construction",
     category: "autocad",
     subcategory: "autocad-3d",
@@ -189,13 +177,14 @@ export const courses: Course[] = [
     instructorId: "serdar-hayydow",
     rating: "4.9",
     durationHours: 20,
+    publicDurationSeconds: 360,
     lessons: 88,
     price: 650,
-    video: SAMPLE_2,
+    videoURL: '/api/courses/autocad-3d-1/video/private',
   },
   {
     id: "3dsmax-modeling-1",
-    image: "/images/courses/3dsmax-model.png",
+    image: "3dsmax-model.png",
     group: "construction",
     category: "3dsmax",
     subcategory: "3dsmax-modeling",
@@ -207,13 +196,14 @@ export const courses: Course[] = [
     instructorId: "gulshat-annamyradowa",
     rating: "4.9",
     durationHours: 22,
+    publicDurationSeconds: 360,
     lessons: 94,
     price: 680,
-    video: SAMPLE_3,
+    videoURL: '/api/courses/3dsmax-modeling-1/video/private',
   },
   {
     id: "3dsmax-rendering-1",
-    image: "/images/courses/3dsmax-render.png",
+    image: "3dsmax-render.png",
     group: "construction",
     category: "3dsmax",
     subcategory: "3dsmax-rendering",
@@ -225,9 +215,10 @@ export const courses: Course[] = [
     instructorId: "gulshat-annamyradowa",
     rating: "4.7",
     durationHours: 18,
+    publicDurationSeconds: 360,
     lessons: 80,
     price: 620,
-    video: SAMPLE_1,
+    videoURL: '/api/courses/3dsmax-rendering-1/video/private',
   },
 
   // ========================
@@ -237,7 +228,7 @@ export const courses: Course[] = [
   // ----- Frontend -----
   {
     id: "frontend-react-1",
-    image: "/images/courses/react.png",
+    image: "react.png",
     group: "programming",
     category: "frontend",
     subcategory: "frontend-react",
@@ -249,13 +240,14 @@ export const courses: Course[] = [
     instructorId: "aygul-myradowa",
     rating: "4.9",
     durationHours: 14,
+    publicDurationSeconds: 360,
     lessons: 86,
     price: 450,
-    video: SAMPLE_1,
+    videoURL: '/api/courses/frontend-react-1/video/private',
   },
   {
     id: "frontend-vue-1",
-    image: "/images/courses/vue.png",
+    image: "vue.png",
     group: "programming",
     category: "frontend",
     subcategory: "frontend-vue",
@@ -267,13 +259,14 @@ export const courses: Course[] = [
     instructorId: "aygul-myradowa",
     rating: "4.7",
     durationHours: 12,
+    publicDurationSeconds: 360,
     lessons: 70,
     price: 420,
-    video: SAMPLE_2,
+    videoURL: '/api/courses/frontend-vue-1/video/private',
   },
   {
     id: "frontend-angular-1",
-    image: "/images/courses/angular.png",
+    image: "angular.png",
     group: "programming",
     category: "frontend",
     subcategory: "frontend-angular",
@@ -285,15 +278,16 @@ export const courses: Course[] = [
     instructorId: "aygul-myradowa",
     rating: "4.6",
     durationHours: 15,
+    publicDurationSeconds: 360,
     lessons: 78,
     price: 480,
-    video: SAMPLE_3,
+    videoURL: '/api/courses/frontend-angular-1/video/private',
   },
 
   // ----- Backend -----
   {
     id: "backend-django-1",
-    image: "/images/courses/django.png",
+    image: "django.png",
     group: "programming",
     category: "backend",
     subcategory: "backend-django",
@@ -305,13 +299,14 @@ export const courses: Course[] = [
     instructorId: "rejep-amanow",
     rating: "4.8",
     durationHours: 20,
+    publicDurationSeconds: 360,
     lessons: 90,
     price: 600,
-    video: SAMPLE_1,
+    videoURL: '/api/courses/backend-django-1/video/private',
   },
   {
     id: "backend-nodejs-1",
-    image: "/images/courses/nodejs.png",
+    image: "nodejs.png",
     group: "programming",
     category: "backend",
     subcategory: "backend-nodejs",
@@ -323,13 +318,14 @@ export const courses: Course[] = [
     instructorId: "rejep-amanow",
     rating: "4.7",
     durationHours: 18,
+    publicDurationSeconds: 360,
     lessons: 82,
     price: 560,
-    video: SAMPLE_2,
+    videoURL: '/api/courses/backend-nodejs-1/video/private',
   },
   {
     id: "backend-spring-1",
-    image: "/images/courses/spring.png",
+    image: "spring.png",
     group: "programming",
     category: "backend",
     subcategory: "backend-spring-boot",
@@ -341,15 +337,16 @@ export const courses: Course[] = [
     instructorId: "rejep-amanow",
     rating: "4.6",
     durationHours: 22,
+    publicDurationSeconds: 360,
     lessons: 96,
     price: 700,
-    video: SAMPLE_3,
+    videoURL: '/api/courses/backend-spring-1/video/private',
   },
 
   // ----- Mobile -----
   {
     id: "mobile-rn-1",
-    image: "/images/courses/rn.png",
+    image: "rn.png",
     group: "programming",
     category: "mobile",
     subcategory: "mobile-react-native",
@@ -361,13 +358,14 @@ export const courses: Course[] = [
     instructorId: "guwanc-bayramow",
     rating: "4.8",
     durationHours: 16,
+    publicDurationSeconds: 360,
     lessons: 74,
     price: 580,
-    video: SAMPLE_2,
+    videoURL: '/api/courses/mobile-rn-1/video/private',
   },
   {
     id: "mobile-flutter-1",
-    image: "/images/courses/flutter.png",
+    image: "flutter.png",
     group: "programming",
     category: "mobile",
     subcategory: "mobile-flutter",
@@ -379,15 +377,16 @@ export const courses: Course[] = [
     instructorId: "guwanc-bayramow",
     rating: "4.6",
     durationHours: 14,
+    publicDurationSeconds: 360,
     lessons: 68,
     price: 540,
-    video: SAMPLE_3,
+    videoURL: '/api/courses/mobile-flutter-1/video/private',
   },
 
   // ----- Data Science -----
   {
     id: "ds-python-1",
-    image: "/images/courses/python-ds.png",
+    image: "python-ds.png",
     group: "programming",
     category: "data-science",
     subcategory: "data-science-python",
@@ -399,13 +398,14 @@ export const courses: Course[] = [
     instructorId: "rejep-amanow",
     rating: "4.7",
     durationHours: 18,
+    publicDurationSeconds: 360,
     lessons: 98,
     price: 640,
-    video: SAMPLE_3,
+    videoURL: '/api/courses/ds-python-1/video/private',
   },
   {
     id: "ds-r-1",
-    image: "/images/courses/r.png",
+    image: "r.png",
     group: "programming",
     category: "data-science",
     subcategory: "data-science-r",
@@ -417,8 +417,9 @@ export const courses: Course[] = [
     instructorId: "rejep-amanow",
     rating: "4.5",
     durationHours: 16,
+    publicDurationSeconds: 360,
     lessons: 72,
     price: 520,
-    video: SAMPLE_1,
+    videoURL: '/api/courses/ds-r-1/video/private',
   },
 ];

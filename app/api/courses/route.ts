@@ -2,9 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/database";
 import { courses } from "@/database/schemas/courses";
 import { courseSchema } from "@/database/zod-schemas/courses";
-import { count, desc } from "drizzle-orm";
+import { count, desc, eq } from "drizzle-orm";
+import { moveCourseFilesToProtected } from "@/lib/courses/move-course-files";
+import { processUploadedVideo } from "@/lib/courses/convert-to-hls";
+import { users } from "@/database/schemas/users";
 
-const COURCE_LIMIT = 4;
+const COURSE_LIMIT = 4;
 
 // GET: /api/courses
 export async function GET(request: NextRequest) {
@@ -12,7 +15,7 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url);
 
         const page = Math.max(1, parseInt(searchParams.get("page") || "1", 10));
-        const limit = COURCE_LIMIT;
+        const limit = COURSE_LIMIT;
         const offset = (page - 1) * limit;
 
         const [{ totalCount }] = await db
@@ -22,6 +25,7 @@ export async function GET(request: NextRequest) {
         const data = await db
             .select()
             .from(courses)
+            .where(eq(courses.isHslReady, true))
             .orderBy(desc(courses.createdAt))
             .limit(limit)
             .offset(offset);
@@ -49,10 +53,16 @@ export async function GET(request: NextRequest) {
     }
 }
 
-// rugsady işlemeli
+// rugsady user role = admin
 // POST: /api/courses
 export async function POST(request: NextRequest) {
     try {
+        const userId = request.headers.get('x-user-id')!;
+        const dbUsers = await db.select().from(users).where(eq(users.id, userId));
+        if (!dbUsers.length || dbUsers[0].role != 'admin') {
+            return new NextResponse("Forbidden", { status: 403 });
+        }
+
         const body = await request.json();
 
         const validation = courseSchema.safeParse(body);
@@ -65,11 +75,31 @@ export async function POST(request: NextRequest) {
                 { status: 400 }
             );
         }
-
-        const [newCourse] = await db
+        let [newCourse] = await db
             .insert(courses)
             .values(validation.data)
             .returning();
+
+        const { image, videoURL, id } = newCourse;
+        // Faýllary /storage/upload-dan /storage/protected_videos/courseId/-e geçirmek
+        const { newVideoPath, imageFileName } =
+            moveCourseFilesToProtected({
+                image,
+                videoURL,
+                courseId: id
+            });
+
+        // Bazadaky kursyň faýl ýollaryny täze atlary bilen update etmek
+        [newCourse] = await db
+            .update(courses)
+            .set({
+                image: `/images/courses/${imageFileName}`,
+                videoURL: `/api/courses/${newCourse.id}/video/private`,
+            })
+            .where(eq(courses.id, id))
+            .returning();
+
+        processUploadedVideo(newCourse.id, newVideoPath);
 
         return NextResponse.json(
             {

@@ -1,6 +1,7 @@
 import { Mail, Globe, GraduationCap } from 'lucide-react';
 import { SiTiktok, SiInstagram } from 'react-icons/si';
 import {useTranslations} from 'next-intl';
+import HeaderLogo from './global/header-logo';
 
 const columns = [
   {
@@ -62,14 +63,15 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2">
+            <HeaderLogo/>
+            {/* <div className="flex items-center gap-2">
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                 <GraduationCap className="h-5 w-5" aria-hidden="true" />
               </span>
               <span className="font-display text-lg font-bold tracking-tight text-foreground">
                 Bilim Akademiýa
               </span>
-            </div>
+            </div> */}
             <p className="mt-4 max-w-sm text-pretty leading-relaxed text-muted-foreground">
               {t('description')}
             </p>

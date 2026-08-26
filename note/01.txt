@@ -1,2 +1,25 @@
 courses/buy/:id
-course level goymaly.
+Satyn alynmada bu derse ýetgi bermeli.
+verifications bu tabel işlemeli bu maglumat
+
+favicon.ico  - web title icon
+
+// admin -> hemme zady görmeklige rugsat bermeli
+
+
+//TEST user(role:user)
+username: Aganepes
+email: aaganepes@gmial.com
+phone: +99361363517
+password: 05051991  ($2b$10$Te.ttqX5mvei/zB2SXjb7.5kAIz7y0WFl3O7QXyzRVHmWpnaigCVC)
+role:user
+id:100
+
+
+//TEST user(role:admin)
+username: Ahmedow
+email: aganepes_math@gmial.com
+phone: +99361000000
+password: 05051991 ($2b$10$Te.ttqX5mvei/zB2SXjb7.5kAIz7y0WFl3O7QXyzRVHmWpnaigCVC)
+role:admin
+id:101

@@ -24,6 +24,9 @@ export const insertUserSchema = createInsertSchema(users, {
   password: z
     .string()
     .min(6, "validation.passwordMin"),
+  role: z
+  .string()
+  .min(4)
 }).refine((data) => data.email || data.phone, {
   message: "validation.emailOrPhoneRequired",
   path: ["email"],

@@ -24,11 +24,14 @@ export async function proxy(request: NextRequest) {
   // Dil (next-intl) Middleware işleýär
   const intlResponse = withIntl(request);
 
-  // Eger Auth-da täze Cookie düzülen bolsa, ony i18n response-yna hem goşýarys
+  // Eger Auth-da täze header goýlan bolsa, ony i18n response-yna hem goşýarys
   authResponse.cookies.getAll().forEach((cookie) => {
     intlResponse.cookies.set(cookie.name, cookie.value);
   });
-
+  const userId = authResponse.headers.get('x-user-id');
+  if (userId) {
+    intlResponse.headers.set('x-user-id', userId)
+  }
   return intlResponse;
 }
 

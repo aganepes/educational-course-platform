@@ -5,22 +5,17 @@ import { X, Lock, ShoppingBag, RotateCcw } from "lucide-react";
 import type { Course, Locale } from "@/data/courses";
 import { useLocale, useTranslations } from "next-intl";
 import { instructorData } from "@/data/instructors";
-
-// Vidstack Dogry Importlary
 import {
   MediaPlayer,
   MediaPlayerInstance,
-  MediaProvider
+  MediaProvider,
 } from "@vidstack/react";
 import {
   DefaultVideoLayout,
   defaultLayoutIcons,
 } from "@vidstack/react/player/layouts/default";
-
-// Vidstack CSS Stil importlary
 import "@vidstack/react/player/styles/default/theme.css";
 import "@vidstack/react/player/styles/default/layouts/video.css";
-
 
 export function VideoModal({
   course,
@@ -32,8 +27,8 @@ export function VideoModal({
   const playerRef = useRef<MediaPlayerInstance>(null);
   const local = useLocale() as Locale;
   const t = useTranslations();
-
   const [isEnded, setIsEnded] = useState(false);
+  const duration = course?.publicDurationSeconds ?? 360;
 
   useEffect(() => {
     if (course) {
@@ -47,10 +42,8 @@ export function VideoModal({
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
-    // document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      // document.body.style.overflow = "";
     };
   }, [course, onClose]);
 
@@ -58,7 +51,12 @@ export function VideoModal({
 
   // Stream gutaranda işleýän event
   const handleVideoEnded = () => {
+    console.log("Video end...");
     setIsEnded(true);
+    // Overlay çykanda wideony arassaja PAUSE edýäris:
+    if (playerRef.current) {
+      playerRef.current.pause();
+    }
   };
 
   // Täzeden Syn Etmek (Replay)
@@ -79,7 +77,7 @@ export function VideoModal({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
+        className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Ýapmak düwmesi */}
@@ -98,16 +96,19 @@ export function VideoModal({
           <MediaPlayer
             ref={playerRef}
             title={course.title[local]}
-            // src={`/api/courses/${course.id}/video/public`}
-            src=""
+            /* src={{
+              src: `/api/courses/${course.id}/video/public`,
+              type: "video/mp4",
+            }} */
+            src={course.videoURL}
             poster={course.image}
             autoplay
             playsInline
+            duration={duration}
             onEnded={handleVideoEnded}
             className="h-full w-full object-contain"
           >
             <MediaProvider />
-            {/* Vidstack-iň taýýar UI Layout-y */}
             {!isEnded && <DefaultVideoLayout icons={defaultLayoutIcons} />}
           </MediaPlayer>
 

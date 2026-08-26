@@ -21,7 +21,6 @@ export const purchases = pgTable(
       .references(() => courses.id, { onDelete: "restrict" }),
     pricePaid: integer("price_paid").notNull().default(0),
     status: varchar("status", { length: 50 }).notNull().default("active"),
-
     createdAt: timestamp("created_at", { mode: "date" })
       .defaultNow()
       .notNull(),

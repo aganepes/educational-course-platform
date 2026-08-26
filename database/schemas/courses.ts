@@ -8,12 +8,13 @@ import {
   timestamp,
   index,
   pgEnum,
+  boolean
 } from "drizzle-orm/pg-core";
-import { instructors,type MultilingualText } from "./instructors";
+import { instructors, type MultilingualText } from "./instructors";
 
 export const GROUPS = ["construction", "programming"] as const;
 
-const groupEnum = pgEnum("course_group", GROUPS);
+export const groupEnum = pgEnum("course_group", GROUPS);
 
 
 export const courses = pgTable(
@@ -29,13 +30,16 @@ export const courses = pgTable(
       .notNull()
       .references(() => instructors.id, { onDelete: "restrict" }),
     rating: real("rating").notNull().default(0.0),
+    level: text("level"),
     durationHours: integer("duration_hours").notNull().default(0),
-    lessons: integer("lessons").notNull().default(0),
-    price: integer("price").notNull().default(0),
-    video: text("video").notNull(),
+    startTime:integer('start-time').notNull().default(0),
     publicDurationSeconds: integer("public_duration_seconds")
       .notNull()
       .default(360),
+    lessons: integer("lessons").notNull().default(0),
+    price: integer("price").notNull().default(0),
+    videoURL: text("video_url").notNull(),
+    isHslReady:boolean('is_hsl_ready').notNull().default(false),
     createdAt: timestamp("created_at", { mode: "date" })
       .defaultNow()
       .notNull(),

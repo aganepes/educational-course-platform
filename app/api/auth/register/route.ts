@@ -82,3 +82,8 @@ export async function POST(request: Request) {
     );
   }
 }
+/* 
+// TEST
+bcrypt.hash('05051991', 10)
+.then(hashedPassword=>console.log(hashedPassword))
+// $2b$10$Te.ttqX5mvei/zB2SXjb7.5kAIz7y0WFl3O7QXyzRVHmWpnaigCVC */

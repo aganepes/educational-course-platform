@@ -3,13 +3,14 @@ import { db } from "@/database";
 import { courses } from "@/database/schemas/courses";
 import { eq } from "drizzle-orm";
 import { updateCourseSchema } from "@/database/zod-schemas/courses";
+import { users } from "@/database/schemas/users";
 
-interface RouteParams {
+export interface RouteVideoParams {
     params: Promise<{ id: string }>;
 }
 
 // GET: /api/courses/:ID
-export async function GET(request: NextRequest, { params }: RouteParams) {
+export async function GET(request: NextRequest, { params }: RouteVideoParams) {
     try {
         const { id } = await params;
 
@@ -27,8 +28,13 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 // update etmeklige rugsadyny işle
 // PUT: /api/courses/:ID
-export async function PUT(request: NextRequest, { params }: RouteParams) {
+export async function PUT(request: NextRequest, { params }: RouteVideoParams) {
     try {
+        const userId = request.headers.get('x-user-id')!;
+        const dbUsers = await db.select().from(users).where(eq(users.id, userId));
+        if (!dbUsers.length || dbUsers[0].role != 'admin') {
+            return new NextResponse("Forbidden", { status: 403 });
+        }
         const { id } = await params;
         const body = await request.json();
 
@@ -63,8 +69,13 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
 // update etmeklige rugsadyny işle
 // DELETE: /api/courses/:ID
-export async function DELETE(request: NextRequest, { params }: RouteParams) {
+export async function DELETE(request: NextRequest, { params }: RouteVideoParams) {
     try {
+        const userId = request.headers.get('x-user-id')!;
+        const dbUsers = await db.select().from(users).where(eq(users.id, userId));
+        if (!dbUsers.length || dbUsers[0].role != 'admin') {
+            return new NextResponse("Forbidden", { status: 403 });
+        }
         const { id } = await params;
 
         const deletedCourse = await db
