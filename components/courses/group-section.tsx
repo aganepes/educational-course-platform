@@ -1,67 +1,70 @@
-// components/courses/group-section.tsx
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
+import type { Course } from "@/data/courses";
+import type { TCourseCategory, TCourseGroup } from "./courses-catalog";
+import useSWR from "swr";
 import { CourseCard } from "@/components/courses/course-card";
-import { courseConfig,type Course } from "@/data/courses";
-
+import Loading from "../ui/loading";
+import ErrorMessage from "../ui/error-message";
 type GroupSectionProps = {
-  groupKey: keyof typeof courseConfig;
-  courses: Course[];
-  categories: readonly string[];
+  group: TCourseGroup;
+  categories: TCourseCategory[];
   onPlay: (course: Course) => void;
 };
 
-const groupColors:any = {
+const groupColors: any = {
   construction: "border-blue-600",
   programming: "border-green-600",
 };
 
-export function GroupSection({
-  groupKey,
-  courses,
-  categories,
-  onPlay,
-}: GroupSectionProps) {
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
+// page bahasyny ulanmadym . Eger gerekli bolsa goşulyp bilersiň.
+export function GroupSection({ group, categories, onPlay }: GroupSectionProps) {
   const t = useTranslations();
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  // Kategoriýa boýunça süzülen kurslar
-  const filteredCourses = useMemo(() => {
-    if (activeCategory === "all") {
-      return courses;
-    }
-    return courses.filter((c) => c.category === activeCategory);
-  }, [courses, activeCategory]);
-  
-  const getCategoryCount = (category: string) => {
-    if (category === "all") {
-      return courses.length;
-    }
-    return courses.filter((c) => c.category === category).length;
-  };
+  const url =
+    activeCategory === "all"
+      ? `/api/courses?group=${group.group}`
+      : `/api/courses?group=${group.group}&category=${activeCategory}`;
+
+  const { data, error, isLoading } = useSWR(url, fetcher);
+
+  const courses = data?.data ?? [];
+
+  function Contents() {
+    if (error) return <ErrorMessage message={t(error.message)} />;
+    if (isLoading) return <Loading message={t("course.loading-message")} />;
+    return courses.map((course:Course) => (
+      <CourseCard key={course.id} course={course} onPlay={onPlay} />
+    ));
+  }
 
   return (
     <section className="mb-14">
       {/* Group title */}
       <div
-        className={`mb-6 flex items-center gap-3 border-l-4 ${groupColors[groupKey]} pl-4`}
+        className={`mb-6 flex items-center gap-3 border-l-4 ${groupColors[group.group]} pl-4`}
       >
         <h2 className="text-3xl font-bold tracking-tight text-foreground">
-          {t(`course.groups.${String(groupKey)}.title`)}
+          {t(`course.groups.${String(group.group)}.title`)}
         </h2>
         <span className="text-sm text-muted-foreground">
-          ({courses.length} {t('global.course')})
+          ({group.count} {t("global.course")})
         </span>
       </div>
-        <p className="text-sm text-muted-foreground my-2">{t(`course.groups.${String(groupKey)}.description`)}</p>
+      <p className="text-sm text-muted-foreground my-2">
+        {t(`course.groups.${String(group.group)}.description`)}
+      </p>
 
       {/* Categories filter buttons */}
       <div
         className="mb-8 flex flex-wrap gap-2"
         role="tablist"
-        aria-label={`${t(`course.groups.${String(groupKey)}.title`)} ${t('global.categories')}`}
+        aria-label={`${t(`course.groups.${String(group.group)}.title`)} ${t("global.categories")}`}
       >
         {/* "all" düwmesi */}
         <button
@@ -83,23 +86,25 @@ export function GroupSection({
                 : "bg-secondary text-muted-foreground"
             }`}
           >
-            {getCategoryCount("all")}
+            {group.count}
           </span>
         </button>
 
         {/* Kategoriýa düwmeleri */}
-        {categories.map((category) => {
-          const isActive = activeCategory === category;
-          const count = getCategoryCount(category);
-          const categoryLabel = t(`course.category.${category}`);
+        {categories.map((dataCategory) => {
+          const isActive = activeCategory === dataCategory.category;
+          const count = categories.filter(
+            (c) => c.category == dataCategory.category,
+          )[0].count;
+          const categoryLabel = t(`course.category.${dataCategory.category}`);
 
           return (
             <button
-              key={category}
+              key={dataCategory.category}
               type="button"
               role="tab"
               aria-selected={isActive}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory(dataCategory.category)}
               className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                 isActive
                   ? "border-primary bg-primary text-primary-foreground"
@@ -123,13 +128,7 @@ export function GroupSection({
 
       {/* Kurs kartoçkalary */}
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {filteredCourses.map((course) => (
-          <CourseCard
-            key={course.id}
-            course={course}
-            onPlay={onPlay}
-          />
-        ))}
+        <Contents />
       </div>
     </section>
   );

@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1787325480938,
-      "tag": "0000_famous_polaris",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1787654186328,
-      "tag": "0001_complex_salo",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1787654282750,
-      "tag": "0002_fearless_shadowcat",
+      "when": 1788004869737,
+      "tag": "0000_curvy_rictor",
       "breakpoints": true
     }
   ]

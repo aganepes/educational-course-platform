@@ -100,7 +100,7 @@ export function VideoModal({
               src: `/api/courses/${course.id}/video/public`,
               type: "video/mp4",
             }} */
-            src={course.videoURL}
+            src={{ src: course.videoURL, type: "video/mp4" }}
             poster={course.image}
             autoplay
             playsInline

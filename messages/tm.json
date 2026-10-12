@@ -94,6 +94,7 @@
     }
   },
   "course": {
+    "loading-message":"Kurs maglumaty ýüklenýär...",
     "groups": {
       "construction": {
         "title": "Gurluşyk kurslary",
@@ -335,5 +336,8 @@
     "phoneRegex": "Nädogry telefon formady (+993xxxxxxxx)",
     "passwordMin": "Parol azyndan 6 simwol bolmaly",
     "emailOrPhoneRequired": "Email ýa-da Telefon belgisinden haýsy hem bolsa birini girizmeli!"
+  },
+  "course-buy":{
+    "title":"Töleg kartyny saýlaň"
   }
 }

@@ -9,8 +9,8 @@ function HeaderLogo() {
     <Link href={`/${locale}`} className="flex items-center gap-2 shrink-0">
         <Image
           src={"/logo_2.png"}
-          height={45}
-          width={100}
+          height={80}
+          width={160}
           className="object-contain"
           alt="logo"
         />

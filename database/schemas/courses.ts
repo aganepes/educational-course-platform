@@ -1,5 +1,4 @@
 import {
-  pgTable,
   varchar,
   text,
   integer,
@@ -7,17 +6,17 @@ import {
   jsonb,
   timestamp,
   index,
-  pgEnum,
   boolean
 } from "drizzle-orm/pg-core";
 import { instructors, type MultilingualText } from "./instructors";
+import { mySchema } from './schema';
 
 export const GROUPS = ["construction", "programming"] as const;
 
-export const groupEnum = pgEnum("course_group", GROUPS);
+export const groupEnum = mySchema.enum("course_group", GROUPS);
 
 
-export const courses = pgTable(
+export const courses = mySchema.table(
   "courses",
   {
     id: varchar("id", { length: 255 }).primaryKey().$defaultFn(() => crypto.randomUUID()),

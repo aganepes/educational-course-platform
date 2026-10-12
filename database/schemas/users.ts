@@ -1,6 +1,7 @@
-import { pgTable, text, varchar, timestamp } from "drizzle-orm/pg-core";
+import { text, varchar, timestamp } from "drizzle-orm/pg-core";
+import { mySchema } from './schema';
 
-export const users = pgTable("users", {
+export const users = mySchema.table("users", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
@@ -15,3 +16,7 @@ export const users = pgTable("users", {
   
   activeSessionId: text("active_session_id"),
 });
+
+
+export type UsersSelect = typeof users.$inferSelect;
+export type UserInsert = typeof users.$inferInsert;

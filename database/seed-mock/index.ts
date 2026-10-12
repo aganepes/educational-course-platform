@@ -3,6 +3,7 @@ import { seedInstructors } from "./instructors";
 import { seedCourses } from "./courses";
 import { seedUsers } from "./users";
 import { seedPurchases } from "./purchases";
+import {seedPaymentMethods} from './payment_methods'
 
 async function main() {
   console.log("🚀 Ähli baza seed prosesi başlandy...");
@@ -18,6 +19,9 @@ async function main() {
 
     // 4. Satyn alnanlary girizmeli (users we courses bar bolmaly)
     await seedPurchases();
+    
+    // 5. Payment Methodes
+    await seedPaymentMethods()
 
     console.log("🎉 Ähli maglumatlar bazaga üstünlikli ýazyldy!");
   process.exit(0);

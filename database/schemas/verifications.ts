@@ -1,6 +1,7 @@
-import { pgTable, varchar, timestamp, index } from "drizzle-orm/pg-core";
+import { varchar, timestamp, index } from "drizzle-orm/pg-core";
+import { mySchema } from './schema';
 
-export const purchaseVerifications = pgTable(
+export const purchaseVerifications = mySchema.table(
   "purchase_verifications",
   {
     id: varchar("id", { length: 255 })
@@ -18,3 +19,8 @@ export const purchaseVerifications = pgTable(
     index("verification_user_course_idx").on(table.userId, table.courseId),
   ]
 );
+
+
+
+export type PurchaseVerificationsSelect = typeof purchaseVerifications.$inferSelect;
+export type PurchaseVerificationsInsert = typeof purchaseVerifications.$inferInsert;

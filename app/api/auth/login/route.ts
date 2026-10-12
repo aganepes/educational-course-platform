@@ -60,6 +60,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, message: "success-message.success-login" });
   } catch (error) {
+    console.log('POST: /api/auth/login error:',error);
     return NextResponse.json(
       { success: false, message: "error-message.server-error" },
       { status: 500 }

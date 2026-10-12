@@ -1,5 +1,4 @@
 import {
-  pgTable,
   varchar,
   integer,
   timestamp,
@@ -9,9 +8,9 @@ import {
 import { courses } from "./courses";
 import { users } from "./users";
 import { relations } from "drizzle-orm";
+import { mySchema } from './schema';
 
-
-export const purchases = pgTable(
+export const purchases = mySchema.table(
   "purchases",
   {
     userId: varchar("user_id", { length: 255 }).notNull()

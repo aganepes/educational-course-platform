@@ -1,10 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import {type NextRequest, NextResponse } from "next/server";
 import { withAuth } from "./middlewares/with-auth";
 import { withIntl } from "./middlewares/with-intl";
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
   // 1. Statik faýllary we API-lary sypdyrmak
   if (
     pathname.startsWith("/_next") ||
@@ -12,7 +11,7 @@ export async function proxy(request: NextRequest) {
   ) {
     return NextResponse.next();
   }
-
+  
   // Ilki Auth Middleware işleýär
   const authResponse = await withAuth(request);
 

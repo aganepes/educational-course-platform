@@ -1,1 +1,0 @@
-CREATE TYPE "public"."course_group" AS ENUM('construction', 'programming');

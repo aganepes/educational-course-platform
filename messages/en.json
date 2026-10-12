@@ -94,6 +94,7 @@
     }
   },
   "course": {
+    "loading-message":"Course details are loading...",
     "groups": {
       "construction": {
         "title": "Construction Courses",
@@ -335,5 +336,8 @@
     "phoneRegex": "Invalid phone format (+993xxxxxxxx)",
     "passwordMin": "Password must be at least 6 characters",
     "emailOrPhoneRequired": "Please provide either an email address or a phone number!"
+  },
+  "course-buy":{
+    "title":"Select a payment card"
   }
 }

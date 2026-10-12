@@ -10,7 +10,7 @@ export async function seedCourses() {
     // ========================
     {
       id: "autocad-2d-1",
-      image: "autocad-2d.png",
+      image: "/images/courses/autocad-2d.png",
       group: "construction" as const,
       category: "autocad",
       subcategory: "autocad-2d",
@@ -31,7 +31,7 @@ export async function seedCourses() {
     },
     {
       id: "autocad-3d-1",
-      image: "autocad-3d.png",
+      image: "/images/courses/autocad-3d.png",
       group: "construction" as const,
       category: "autocad",
       subcategory: "autocad-3d",
@@ -52,7 +52,7 @@ export async function seedCourses() {
     },
     {
       id: "3dsmax-modeling-1",
-      image: "3dsmax-model.png",
+      image: "/images/courses/3dsmax-model.png",
       group: "construction" as const,
       category: "3dsmax",
       subcategory: "3dsmax-modeling",
@@ -73,7 +73,7 @@ export async function seedCourses() {
     },
     {
       id: "3dsmax-rendering-1",
-      image: "3dsmax-render.png",
+      image: "/images/courses/3dsmax-render.png",
       group: "construction" as const,
       category: "3dsmax",
       subcategory: "3dsmax-rendering",
@@ -100,7 +100,7 @@ export async function seedCourses() {
     // ----- Frontend -----
     {
       id: "frontend-react-1",
-      image: "react.png",
+      image: "/images/courses/react.png",
       group: "programming" as const,
       category: "frontend",
       subcategory: "frontend-react",
@@ -121,7 +121,7 @@ export async function seedCourses() {
     },
     {
       id: "frontend-vue-1",
-      image: "vue.png",
+      image: "/images/courses/vue.png",
       group: "programming" as const,
       category: "frontend",
       subcategory: "frontend-vue",
@@ -142,7 +142,7 @@ export async function seedCourses() {
     },
     {
       id: "frontend-angular-1",
-      image: "angular.png",
+      image: "/images/courses/angular.png",
       group: "programming" as const,
       category: "frontend",
       subcategory: "frontend-angular",
@@ -165,7 +165,7 @@ export async function seedCourses() {
     // ----- Backend -----
     {
       id: "backend-django-1",
-      image: "django.png",
+      image: "/images/courses/django.png",
       group: "programming" as const,
       category: "backend",
       subcategory: "backend-django",
@@ -186,7 +186,7 @@ export async function seedCourses() {
     },
     {
       id: "backend-nodejs-1",
-      image: "nodejs.png",
+      image: "/images/courses/nodejs.png",
       group: "programming" as const,
       category: "backend",
       subcategory: "backend-nodejs",
@@ -207,7 +207,7 @@ export async function seedCourses() {
     },
     {
       id: "backend-spring-1",
-      image: "spring.png",
+      image: "/images/courses/spring.png",
       group: "programming" as const,
       category: "backend",
       subcategory: "backend-spring-boot",
@@ -230,7 +230,7 @@ export async function seedCourses() {
     // ----- Mobile -----
     {
       id: "mobile-rn-1",
-      image: "rn.png",
+      image: "/images/courses/rn.png",
       group: "programming" as const,
       category: "mobile",
       subcategory: "mobile-react-native",
@@ -251,7 +251,7 @@ export async function seedCourses() {
     },
     {
       id: "mobile-flutter-1",
-      image: "flutter.png",
+      image: "/images/courses/flutter.png",
       group: "programming" as const,
       category: "mobile",
       subcategory: "mobile-flutter",
@@ -274,7 +274,7 @@ export async function seedCourses() {
     // ----- Data Science -----
     {
       id: "ds-python-1",
-      image: "python-ds.png",
+      image: "/images/courses/python-ds.png",
       group: "programming" as const,
       category: "data-science",
       subcategory: "data-science-python",
@@ -295,7 +295,7 @@ export async function seedCourses() {
     },
     {
       id: "ds-r-1",
-      image: "r.png",
+      image: "/images/courses/r.png",
       group: "programming" as const,
       category: "data-science",
       subcategory: "data-science-r",

@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/database";
 import { courses } from "@/database/schemas/courses";
 import { courseSchema } from "@/database/zod-schemas/courses";
-import { count, desc, eq } from "drizzle-orm";
+import { count, desc, eq, getTableColumns, lte, sql, and } from "drizzle-orm";
 import { moveCourseFilesToProtected } from "@/lib/courses/move-course-files";
 import { processUploadedVideo } from "@/lib/courses/convert-to-hls";
 import { users } from "@/database/schemas/users";
 
-const COURSE_LIMIT = 4;
+const limit = process.env?.COURSE_LIMIT ? parseInt(process.env?.COURSE_LIMIT) : 4;
 
 // GET: /api/courses
 export async function GET(request: NextRequest) {
@@ -15,19 +15,56 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url);
 
         const page = Math.max(1, parseInt(searchParams.get("page") || "1", 10));
-        const limit = COURSE_LIMIT;
+
+        const group = searchParams.get("group");
+        const category = searchParams.get("category");
+
+        const conditions = [
+            eq(courses.isHslReady, true),
+        ];
+
+        if (group === "construction" || group === "programming") {
+            conditions.push(eq(courses.group, group));
+        }
+
+        if (category) {
+            conditions.push(eq(courses.category, category));
+        }
+
         const offset = (page - 1) * limit;
 
         const [{ totalCount }] = await db
             .select({ totalCount: count() })
             .from(courses);
 
+        const sq = db
+            .select({
+                id: courses.id,
+                title: courses.title,
+                instructorId: courses.instructorId,
+                durationHours: courses.durationHours,
+                price: courses.price,
+                subcategory: courses.subcategory,
+                category: courses.category,
+                group: courses.group,
+                image: courses.image,
+                rating: courses.rating,
+                lessons: courses.lessons,
+                rowNum: sql<number>`row_number() over (
+                    partition by ${courses.group} 
+                    order by ${courses.createdAt} desc
+                )`.mapWith(Number).as('row_num')
+            })
+            .from(courses)
+            .where(
+                and(...conditions)
+            )
+            .as('sq');
+
         const data = await db
             .select()
-            .from(courses)
-            .where(eq(courses.isHslReady, true))
-            .orderBy(desc(courses.createdAt))
-            .limit(limit)
+            .from(sq)
+            .where(lte(sq.rowNum, limit))
             .offset(offset);
 
         const totalPages = Math.ceil(totalCount / limit);

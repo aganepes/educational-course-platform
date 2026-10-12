@@ -31,7 +31,7 @@ export async function seedPurchases() {
   const purchaseData: PurchaseInsert[] = courseIds.map((courseId) => ({
     userId: "100",
     courseId: courseId,
-    pricePaid: 10,
+    pricePaid: 1000,
     status: "active",
   }));
 

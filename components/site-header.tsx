@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import HeaderLogo from "./global/header-logo";
 import HeaderNav from "./global/header-nav";

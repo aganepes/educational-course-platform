@@ -1,6 +1,5 @@
-import { db } from "../"; 
+import { db } from "../";
 import { instructors, type InstructorInsert } from "../schemas/instructors";
-
 
 export async function seedInstructors() {
   console.log("🌱 Mugallymlar (Instructors) seed başlandy...");
@@ -120,7 +119,7 @@ export async function seedInstructors() {
   await db
     .insert(instructors)
     .values(recordsToInsert)
-    .onConflictDoNothing();
+    .onConflictDoNothing({ target: instructors.id });
 
   console.log("✅ Mugallymlar seed üstünlikli tamamlandy!");
 }

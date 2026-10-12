@@ -1,10 +1,10 @@
 import {
-  pgTable,
   varchar,
   text,
   jsonb,
   timestamp,
 } from "drizzle-orm/pg-core";
+import { mySchema } from './schema';
 
 export type MultilingualText = {
   tm: string;
@@ -25,7 +25,7 @@ export type SocialLinks = {
   [key: string]: string | undefined;
 };
 
-export const instructors = pgTable("instructors", {
+export const instructors = mySchema.table("instructors", {
   id: varchar("id", { length: 255 }).primaryKey().$defaultFn(()=>crypto.randomUUID()),
   name: jsonb("name").$type<MultilingualText>().notNull(),
   profession: jsonb("profession").$type<MultilingualText>().notNull(),
