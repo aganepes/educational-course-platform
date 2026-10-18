@@ -3,27 +3,43 @@ import fs from "fs";
 import path from "path";
 import { db } from "@/database";
 import { courses } from "@/database/schemas/courses";
-import { eq, and } from "drizzle-orm";
+import { eq, and, gt } from "drizzle-orm";
 import type { RouteVideoParams } from "../../route";
 import { purchases } from "@/database/schemas/purchases";
 
-export async function GET(
-  request: NextRequest,
-  { params }: RouteVideoParams
-) {
+export async function GET(request: NextRequest, { params }: RouteVideoParams) {
   try {
     const { id } = await params;
     const userId = request.headers.get("x-user-id")!;
-
-    const dbPurchase = await db.select().from(purchases).where(and(eq(purchases.courseId, id), eq(purchases.userId, userId), purchases.status, purchases.pricePaid));
-    // don't to buy
-    if (!dbPurchase.length) {
-      return new NextResponse("Forbidden", { status: 403 });;
+    // !  bu ýerde "x-user-id" key gelmeýär
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
     }
-    const dbCourse = await db.select().from(courses).where(and(eq(courses.isHslReady, true), eq(courses.id, id)));
+    // 1. Satyn alyş barlagy
+    const dbPurchase = await db
+      .select()
+      .from(purchases)
+      .where(
+        and(
+          eq(purchases.courseId, id),
+          eq(purchases.userId, "100"), // userId
+          eq(purchases.status, "active"),
+          gt(purchases.pricePaid, 0),
+        ),
+      );
+    
+    if (!dbPurchase.length) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+
+    // 2. Kurs barlagy
+    const dbCourse = await db
+      .select()
+      .from(courses)
+      .where(and(eq(courses.isHslReady, true), eq(courses.id, id)));
     // hsl not ready
     if (!dbCourse.length) {
-      return new NextResponse("Forbidden", { status: 403 });;
+      return new NextResponse("Forbidden", { status: 403 });
     }
 
     // Serwerdäki HLS Playlist (.m3u8) faýlynyň fiziki ýoly
@@ -31,8 +47,8 @@ export async function GET(
       process.cwd(),
       "storage",
       "protected_videos",
-      id,
-      "output.m3u8"
+      "video-1", //id
+      "output.m3u8",
     );
 
     if (!fs.existsSync(m3u8Path)) {
@@ -47,7 +63,7 @@ export async function GET(
       headers: {
         "Content-Type": "application/x-mpegURL",
         "Cache-Control": "no-store, no-cache, must-revalidate, private",
-        "Pragma": "no-cache",
+        Pragma: "no-cache",
       },
     });
   } catch (error) {
