@@ -51,9 +51,7 @@ export function VideoModal({
 
   // Stream gutaranda işleýän event
   const handleVideoEnded = () => {
-    console.log("Video end...");
     setIsEnded(true);
-    // Overlay çykanda wideony arassaja PAUSE edýäris:
     if (playerRef.current) {
       playerRef.current.pause();
     }
@@ -96,11 +94,7 @@ export function VideoModal({
           <MediaPlayer
             ref={playerRef}
             title={course.title[local]}
-            /* src={{
-              src: `/api/courses/${course.id}/video/public`,
-              type: "video/mp4",
-            }} */
-            src={{ src: course.videoURL, type: "video/mp4" }}
+            src={{ src: course.videoURL, type: "application/x-mpegurl" }}
             poster={course.image}
             autoplay
             playsInline
