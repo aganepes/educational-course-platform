@@ -8,10 +8,10 @@ import { courses } from "@/database/schemas/courses";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string; filename: string }> },
+  { params }: { params: Promise<{ id: string; segmentId: string }> },
 ) {
   try {
-    const { id, filename } = await params;
+    const { id, segmentId } = await params;
     const userId = request.headers.get("x-user-id");
 
     if (!userId) {
@@ -25,7 +25,7 @@ export async function GET(
       .where(
         and(
           eq(purchases.courseId, id),
-          eq(purchases.userId, "100"), //userId
+          eq(purchases.userId, userId),
           eq(purchases.status, "active"),
           gt(purchases.pricePaid, 0),
         ),
@@ -50,8 +50,8 @@ export async function GET(
       process.cwd(),
       "storage",
       "protected_videos",
-      "video-1", // id
-      filename,
+      process.env.NODE_ENV == "development" ? "video-1" : id,
+      segmentId,
     );
 
     if (!fs.existsSync(segmentPath)) {

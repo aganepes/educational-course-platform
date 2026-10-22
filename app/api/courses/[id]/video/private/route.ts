@@ -11,7 +11,7 @@ export async function GET(request: NextRequest, { params }: RouteVideoParams) {
   try {
     const { id } = await params;
     const userId = request.headers.get("x-user-id")!;
-    // !  bu ýerde "x-user-id" key gelmeýär
+    console.log("[/video/private]", userId);
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
@@ -22,12 +22,12 @@ export async function GET(request: NextRequest, { params }: RouteVideoParams) {
       .where(
         and(
           eq(purchases.courseId, id),
-          eq(purchases.userId, "100"), // userId
+          eq(purchases.userId, userId),
           eq(purchases.status, "active"),
           gt(purchases.pricePaid, 0),
         ),
       );
-    
+
     if (!dbPurchase.length) {
       return new NextResponse("Forbidden", { status: 403 });
     }
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest, { params }: RouteVideoParams) {
       process.cwd(),
       "storage",
       "protected_videos",
-      "video-1", //id
+      process.env.NODE_ENV == "development" ? "video-1" : id,
       "output.m3u8",
     );
 

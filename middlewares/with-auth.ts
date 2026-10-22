@@ -45,14 +45,13 @@ export async function withAuth(request: NextRequest) {
       const token = await jwtVerify(refreshToken, REFRESH_SECRET, {
         algorithms: ["HS256"],
       });
-
       newAccessTokenToSet = await signAccessToken({
         userId: token.payload.userId as string,
         sessionId: token.payload.sessionId as string,
       });
       isAuthenticated = true;
       userId = token.payload.userId as string;
-    } catch {
+    } catch (err) {
       isAuthenticated = false;
     }
   }
@@ -66,8 +65,8 @@ export async function withAuth(request: NextRequest) {
   const isPublicRoute = PUBLIC_ROUTES.some(
     (route) => pathnameWithoutLocale === route,
   );
-  const isProtectedRoute = !isPublicRoute;
 
+  const isProtectedRoute = !isPublicRoute;
   const locale = routing.defaultLocale;
 
   // Redirect Logikasy
@@ -83,7 +82,6 @@ export async function withAuth(request: NextRequest) {
 
   // Eger täze Access Token alynan bolsa, ony Header arkaly indiki middleware-e berýäris
   const response = NextResponse.next();
-
   if (userId) {
     response.headers.set("x-user-id", userId);
   }
